@@ -38,11 +38,44 @@ categories: learn AI
 
 `+= and *=` are allowed but with dtype compatability as in any different language
 
+`max,min,sum`
+{% highlight ruby %}
+>>>a
+array([[0.82770259, 0.40919914, 0.54959369],
+       [0.02755911, 0.75351311, 0.53814331]])
+>>> a.sum()
+3.1057109529998157
+>>> a.min()
+0.027559113243068367
+>>> a.max()
+0.8277025938204418
+{% endhighlight %}
+
+when argument like axis=0 or 1 is mentioned the arrays gets collapsed along the mentioned axis and the operation happens along the mentioned axis
 
 
+{% highlight ruby %}
+>>> b
+array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11]])
+>>>
+>>> b.sum(axis=0)                            # sum of each column
+array([12, 15, 18, 21])
+{% endhighlight %}
 
 
+`Math functions`
 
+`np.sqrt`:return the square root matrix of the given matrix
+
+`np.exp():` return the exponential matrix of the given matrix 
+
+{% highlight ruby %}
+>>> a = `np.arange(10)**3`
+>>> a
+array([  0,   1,   8,  27,  64, 125, 216, 343, 512, 729])
+{% endhighlight %}
 
 I have tried to code the attention function as a part of our reading group discussion:
 
