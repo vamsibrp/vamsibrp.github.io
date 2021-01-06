@@ -77,7 +77,7 @@ array([12, 15, 18, 21])
 array([  0,   1,   8,  27,  64, 125, 216, 343, 512, 729])
 {% endhighlight %}
 
-I have tried to code the attention function as a part of our reading group discussion:
+Here is how we define a function and implement
 
 {% highlight ruby %}
 import numpy as np 
