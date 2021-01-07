@@ -5,11 +5,13 @@ date:   2021-01-06 16:23:27 +0530
 categories: learn AI
 ---
 {% highlight ruby %}
-`What is NumPy?`
+What is NumPy?
 NumPy is a python library which provide fixed size multidimensional arrays at creation and functionalities for scientific calculations on those nd-arrays which includes logical,algebrical,mathematical,statistical operations and many more cool features. These are quite different python lists and to keep up with the new python-based software there is a need to understand numpy and have a hands-on numpy.
 {% endhighlight %}
 
 Now, we are aware of why we use numpy. Let's jump into some basics of numpy.
+
+<img src="{{site.baseurl}}/images/intro.jpg">
 
 `Creating an ndarray` is the first thing we want to learn
 
@@ -44,7 +46,7 @@ a.shape   #returns (3,4)
 
 a.size    #return 12
 
-a.dtype     # returns int32
+a.dtype     # returns int32	
 
 a.itemsize  # return 4
 
