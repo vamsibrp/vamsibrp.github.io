@@ -11,7 +11,7 @@ NumPy is a python library which provide fixed size multidimensional arrays at cr
 
 Now, we are aware of why we use numpy. Let's jump into some basics of numpy.
 
-<img src="{{site.baseurl}}/images/intro.jpg">
+<img src="{{site.baseurl}}/images/intro.png">
 
 ![Intro](/images/intro.png)
 
