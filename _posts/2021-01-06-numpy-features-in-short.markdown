@@ -11,16 +11,11 @@ NumPy is a python library which provide fixed size multidimensional arrays at cr
 
 Now, we are aware of why we use numpy. Let's jump into some basics of numpy.
 
+`Creating an ndarray` is the first thing we want to learn
+
 ![Intro](/images/intro.png)
 
 
-`Creating an ndarray` is the first thing we want to learn
-
-{% highlight ruby %}
-a = nd.array([2,3,4])  # creates an ndarray
-or 
-a =  nd.arange(12)     # creates an ndarray of size 12 with elements from 0 to 11
-{% endhighlight %}
 
 Now, We know how to create an ndarray. It's time to play with that a bit
 
@@ -38,20 +33,7 @@ Now, We know how to create an ndarray. It's time to play with that a bit
 
 `itemsize`: gives the size of the datatype
 
-{% highlight ruby %}
-a =  nd.arange(12).reshape(3,4)     # reshape re-shapes the 1D array into matrix of shape (3,4)
-
-a.ndim    # returns 2
-
-a.shape   #returns (3,4)
-
-a.size    #return 12
-
-a.dtype     # returns int32	
-
-a.itemsize  # return 4
-
-{% endhighlight %}
+![Intro](/images/proper.png)
 
 `np.zeros(m,n)`: gives a matrix of size mxn with all zeroes
 `np.ones(m,n)`: gives a matrix of size mxn with all ones
@@ -64,13 +46,13 @@ a.itemsize  # return 4
 
 `np.linspace(i,f, n)`: gives n points between i and f which are equi-distant
 
+![Intro](/images/zeros.png)
+
+
 `Operations on Matrices`:
 
-`element wise multiplication:` M1 * M2
+![Intro](/images/matmul.png)
 
-`matrix multiplication:` M1 @ M2 or M1.dot(M2)
-
-`+= and *=` are allowed but with dtype compatability as in any different language
 
 `max,min,sum` properties
 {% highlight ruby %}
