@@ -106,26 +106,28 @@ a.resize(m,n)          #returns the resized matrix and happens in-place
 {% endhighlight %}
 
 
-Stacking 
+`Stacking is a process where we stack up two matrices one on the top of the other or one beside the other`
 
-{% highlight ruby %}
 with vstack arrays are concatenated along axis 0
 
 with hstack arrays are concatenated along axis 1
 
 The function column_stack stacks 1D arrays as columns into a 2D array. It is equivalent to hstack only for 2D arrays
 
+![1Dimension-stacking](/images/1D.png)
+
 The function row_stack stacks similar to as vstack
 
+![MultiDimension-stacking](/images/multiD.png)
 
 
-{% endhighlight %}
 
-
+Split function: 
 `np.hsplit(a,(3,4))`: returns arrays split at columns 3,4 resulting into 3 arrays
 
 
-Making Copies and Deep copy
+`Making Copies and Deep copy`: Storing values in different forms is key to improve the perfomance.
+Numpy provides us with some ways to make copies and store data.
 
 {% highlight ruby %}
 Simple assignments make no copy of objects
@@ -141,7 +143,10 @@ this is helpful When we need some section of very huge data. we take a copy of t
 
 {% endhighlight %}
 
-`Linear Algebra`:
+`Linear Algebra`: Here are some of the basic Linear Algebraic functionalities like
+Transpose, Inverse, Identity , Solving a matrix or finding trace or finding the eigen
+values and corresponding eigen values. These functions provided in Numpy helps in making 
+the code readable and consistent
 
 {% highlight ruby %}
 
