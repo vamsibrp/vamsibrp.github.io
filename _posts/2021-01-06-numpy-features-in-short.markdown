@@ -13,6 +13,9 @@ Now, we are aware of why we use numpy. Let's jump into some basics of numpy.
 
 <img src="{{site.baseurl}}/images/intro.jpg">
 
+![Intro](/images/intro.png)
+
+
 `Creating an ndarray` is the first thing we want to learn
 
 {% highlight ruby %}
