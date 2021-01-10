@@ -52,7 +52,7 @@ Now, Let's see some other functionalities to initilaize nd-arrays with some cust
 
 ![Intro](/images/zeros.png)
 
-<h1>{{Operations on Matrices}}</h1>
+<h1>{{"Operations on Matrices"}}</h1>
  As said earlier numpy provides functionalities for scientific calculations to make life easy for a developer and reduce user written for loops to implement complex multiplications
 
 ![Intro](/images/matmul.png)
@@ -84,7 +84,7 @@ array([[ 0,  1,  2,  3],
 array([12, 15, 18, 21])
 {% endhighlight %}
 
-<h1>{{Math functions}}</h1>
+<h1>{{"Math functions"}}</h1>
 
 `np.sqrt`:return the square root matrix of the given matrix
 
@@ -108,7 +108,7 @@ a.T                    #returns transpose of a matrix
 a.resize(m,n)          #returns the resized matrix and happens in-place
 {% endhighlight %}
 
-<h1>{{Stacking}}</h1>
+<h1>{{"Stacking"}}</h1>
 `Stacking` is a process where we stack up two matrices one on the top of the other or one beside the other
 
 with vstack, arrays are concatenated along axis 0
@@ -125,10 +125,10 @@ The function row_stack stacks similar to as vstack
 
 
 
-<h1>{{Split function}}</h1>
+<h1>{{"Split function"}}</h1>
 `np.hsplit(a,(3,4))`: returns arrays split at columns 3,4 resulting into 3 arrays
 
-<h1>{{Making Copies and Deep copy}}</h1>
+<h1>{{"Making Copies and Deep copy"}}</h1>
 Storing values in different forms is key to improve the perfomance.
 Numpy provides us with some ways to make copies and store data.
 
@@ -145,7 +145,7 @@ this is helpful When we need some section of very huge data. we take a copy of t
 
 
 {% endhighlight %}
-<h1>{{Linear Algebra}}</h1>
+<h1>{{"Linear Algebra"}}</h1>
 Here are some of the basic Linear Algebraic functionalities like
 Transpose, Inverse, Identity , Solving a matrix or finding trace or finding the eigen
 values and corresponding eigen values. These functions provided in Numpy helps in making 
