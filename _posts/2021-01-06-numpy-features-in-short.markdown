@@ -33,7 +33,10 @@ Now, We know how to create an ndarray. It's time to play with that a bit
 
 ![Intro](/images/proper.png)
 
-`np.zeros(m,n)`: gives a matrix of size mxn with all zeroes
+Now, Let's see some other functionalities to initilaize nd-arrays with some custom initializations
+
+`np.zeros(m,n)`: gives a matrix of size mxn with all zeros
+
 `np.ones(m,n)`: gives a matrix of size mxn with all ones
 
 `np.arange(m)`: gives a list of size m from 0 to m-1
@@ -47,12 +50,12 @@ Now, We know how to create an ndarray. It's time to play with that a bit
 ![Intro](/images/zeros.png)
 
 
-`Operations on Matrices`:
+`Operations on Matrices`: As said earlier numpy provides functionalities for scientific calculations to make life easy for a developer and reduce user written for loops to implement complex multiplications
 
 ![Intro](/images/matmul.png)
 
 
-`max,min,sum` properties
+`` properties
 {% highlight ruby %}
 >>>a                      # assume a.shape is (2,3)
 array([[0.82770259, 0.40919914, 0.54959369],
@@ -104,13 +107,13 @@ a.resize(m,n)          #returns the resized matrix and happens in-place
 {% endhighlight %}
 
 
-`Stacking is a process where we stack up two matrices one on the top of the other or one beside the other`
+`Stacking` is a process where we stack up two matrices one on the top of the other or one beside the other
 
-with vstack arrays are concatenated along axis 0
+with vstack, arrays are concatenated along axis 0
 
-with hstack arrays are concatenated along axis 1
+with hstack, arrays are concatenated along axis 1
 
-The function column_stack stacks 1D arrays as columns into a 2D array. It is equivalent to hstack only for 2D arrays
+The function column_stack, stacks 1D arrays as columns into a 2D array. It is equivalent to hstack only for 2D arrays
 
 ![1Dimension-stacking](/images/1D.png)
 
