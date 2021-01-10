@@ -6,9 +6,8 @@ categories: [HTML,Code]
 
 ---
 
-<h1>{{ "Hello World!" | downcase }}</h1>
+<h1>{{ "What is NumPy?" }}</h1>
 
-`What is NumPy?`
 NumPy is a python library which provide fixed size multidimensional arrays at creation and functionalities for scientific calculations on those nd-arrays which includes logical,algebrical,mathematical,statistical operations and many more cool features. These are quite different python lists and to keep up with the new python-based software there is a need to understand numpy and have a hands-on numpy.
 
 Now, we are aware of why we use numpy. Let's jump into some basics of numpy.
@@ -53,13 +52,13 @@ Now, Let's see some other functionalities to initilaize nd-arrays with some cust
 
 ![Intro](/images/zeros.png)
 
-
-`Operations on Matrices`: As said earlier numpy provides functionalities for scientific calculations to make life easy for a developer and reduce user written for loops to implement complex multiplications
+<h1>{{Operations on Matrices}}</h1>
+ As said earlier numpy provides functionalities for scientific calculations to make life easy for a developer and reduce user written for loops to implement complex multiplications
 
 ![Intro](/images/matmul.png)
 
 
-`` properties
+`adhoc` properties
 {% highlight ruby %}
 >>>a                      # assume a.shape is (2,3)
 array([[0.82770259, 0.40919914, 0.54959369],
@@ -85,8 +84,7 @@ array([[ 0,  1,  2,  3],
 array([12, 15, 18, 21])
 {% endhighlight %}
 
-
-`Math functions`
+<h1>{{Math functions}}</h1>
 
 `np.sqrt`:return the square root matrix of the given matrix
 
@@ -110,7 +108,7 @@ a.T                    #returns transpose of a matrix
 a.resize(m,n)          #returns the resized matrix and happens in-place
 {% endhighlight %}
 
-
+<h1>{{Stacking}}</h1>
 `Stacking` is a process where we stack up two matrices one on the top of the other or one beside the other
 
 with vstack, arrays are concatenated along axis 0
@@ -127,11 +125,11 @@ The function row_stack stacks similar to as vstack
 
 
 
-Split function: 
+<h1>{{Split function}}</h1>
 `np.hsplit(a,(3,4))`: returns arrays split at columns 3,4 resulting into 3 arrays
 
-
-`Making Copies and Deep copy`: Storing values in different forms is key to improve the perfomance.
+<h1>{{Making Copies and Deep copy}}</h1>
+Storing values in different forms is key to improve the perfomance.
 Numpy provides us with some ways to make copies and store data.
 
 {% highlight ruby %}
@@ -147,8 +145,8 @@ this is helpful When we need some section of very huge data. we take a copy of t
 
 
 {% endhighlight %}
-
-`Linear Algebra`: Here are some of the basic Linear Algebraic functionalities like
+<h1>{{Linear Algebra}}</h1>
+Here are some of the basic Linear Algebraic functionalities like
 Transpose, Inverse, Identity , Solving a matrix or finding trace or finding the eigen
 values and corresponding eigen values. These functions provided in Numpy helps in making 
 the code readable and consistent
@@ -169,10 +167,10 @@ np.linalg.solve(a, y)  # solves for x in the expression ax=y
 
 {% endhighlight %}
 
-Here is how we define a function and implement
+Here is how we define a function and implement:
 
 {% highlight ruby %}
-iimport numpy as np 
+import numpy as np 
 
 c = np.arange(12).reshape(3,4)
 
