@@ -28,14 +28,12 @@ twitter_username: pssvbr
 github_username:  vamsibrp
 
 # Build settings
-theme: reverie
+theme: minima
 plugins:
   - jekyll-feed
 
 permalink: /:title/
 
-paginate: 6
-paginate_path: /page:num/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
