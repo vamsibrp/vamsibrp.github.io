@@ -69,7 +69,18 @@ PS: If you wish to learn more. Please [click](https://docs.python-guide.org/writ
 Stored as ./MakeFile in root repo. It provides user with utilities to build or install packages basing on the arguments. 
 
 
+### Structure of code
 
+It is relatively easy to structure a Python project. Easy, here, means that you do not have many constraints and that the module importing model is easy to grasp. This means it is also easy to do it poorly. Let us see some of the ways of poor code structures.
+
+```
+* Multiple and messy circular dependencies
+* Hidden coupling
+* Heavy usage of global state or context
+* Spaghetti code
+* Ravioli code
+
+```
 
 
 
