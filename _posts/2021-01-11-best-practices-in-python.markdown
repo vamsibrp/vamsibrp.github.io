@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Best Practices in Python"
-date:   2021-01-11 16:23:27 +0530
+date:   2021-01-10 16:23:27 +0530
 categories: Python
 ---
 
