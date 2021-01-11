@@ -68,3 +68,156 @@ PS: If you wish to learn more. Please [click](https://docs.python-guide.org/writ
 ### MakeFile
 Stored as ./MakeFile in root repo. It provides user with utilities to build or install packages basing on the arguments. 
 
+
+### Structure of code
+
+It is relatively easy to structure a Python project. Easy, here, means that you do not have many constraints and that the module importing model is easy to grasp. This means it is also easy to do it poorly. Let us see some of the ways of poor code structures.
+
+```
+1. Multiple and messy circular dependencies
+1. Hidden coupling
+1. Heavy usage of global state or context
+1. Spaghetti code
+1. Ravioli code
+
+```
+
+### Modules 
+
+Python modules are one of the main abstraction layers available . Abstraction layers allow separating code into parts holding related data and functionality. So, there arises a need to import one module into the other. This is done with the import and from ... import statements. These modules may be in-built, third-party or from our own code.
+
+PS: module names should be free off `.,_,!,` to make it short and readable
+
+The best way to import a module is by importing the whole module instead of a particular fucntion or using * 
+
+`Example:`
+
+Approach A:
+{% highlight ruby%}
+from modu import *
+[...]
+x = sqrt(4)
+{% endhighlight %}
+Approach B:
+% highlight ruby%}
+from modu import sqrt
+[...]
+x = sqrt(4)
+{% endhighlight %}
+Approach C:
+% highlight ruby%}
+import modu
+[...]
+x = modu.sqrt(4)
+{% endhighlight %}
+
+Among the three approaches, C > B > A because of the readability and re-usability of the code.
+
+
+### Packages
+
+Any directory with an __init__.py file is considered a Python package. The different modules in the package are imported in a similar manner as plain modules, but with a special behavior for the __init__.py file, which is used to gather all package-wide definitions.
+
+Let's assume A file modu.py in the directory pack/ and it is imported with the statement import pack.modu. This statement will look for __init__.py file in pack and execute all of its top-level statements. Then it will look for a file named pack/modu.py and execute all of its top-level statements.
+
+Leaving an __init__.py file empty is considered normal and even good practice
+
+
+### OOP
+
+Yes, Python implements OOP concepts but not as main programming paradigm. The way Python handles modules and namespaces gives the developer a natural way to ensure the encapsulation and separation of abstraction layers. So, python programmers tend not to use OOP unless business requirement comes in.
+
+There are some reasons to avoid unnecessary object-orientation. The problem, as pointed out by the discussions about functional programming, comes from the “state” part of the equation. In some architectures, typically web applications, multiple instances of Python processes are spawned as a response to external requests that happen simultaneously. In this case, holding some state in instantiated objects, which means keeping some static information about the world, is prone to concurrency problems or race conditions.
+
+Sometimes, between the initialization of the state of an object (usually done with the __init__() method) and the actual use of the object state through one of its methods, the world may have changed, and the retained state may be outdated. This and other issues led to the idea that using stateless functions is a better programming paradigm.
+
+A function’s implicit context is made up of any of the global variables or items in the persistence layer that are accessed from within the function. A function’s implicit context is made up of any of the global variables or items in the persistence layer that are accessed from within the function
+
+Carefully isolating functions with context and side-effects from functions with logic(called pure functions) allows the following benefits. In summary, pure functions are more efficient building blocks than classes and objects for some architectures because they have no context or side-effects.
+
+
+### Decorators
+
+
+
+### Context Managers
+
+
+### Dynamic typing
+
+Python is dynamically typed, which means that variables do not have a fixed type. The dynamic typing of Python is often considered to be a weakness, and indeed it can lead to complexities and hard-to-debug code. To avoid that the developer has to maintain good naming techniques
+
+say
+
+count = 1 instead of a = 1 . It makes code readable
+
+Reusing a variable names: There is no efficiency gain when reusing names: the assignments will have to create new objects anyway.
+
+It may be a good discipline to avoid assigning to a variable more than once, and it helps in grasping the concept of mutable and immutable types.
+
+
+### Mutable and immutable types
+
+Mutable types are those that allow in-place modification of the content. Typical mutables are lists and dictionaries. Immutable types provide no method for changing their content.
+
+Mutable Example:
+{% highlight ruby%}
+list = [1,2,3]
+list[0] = 5
+{% endhighlight %}
+Immutable Example
+{% highlight ruby%}
+x = 1
+x = x + 1
+{% endhighlight %}
+
+Using properly mutable types for things that are mutable in nature and immutable types for things that are fixed in nature helps to clarify the intent of the code.
+
+Strings are immutable.  so, appending each part to the string is inefficient because the entirety of the string is copied on each append. Instead, it is much more efficient to accumulate the parts in a list, which is mutable, and then glue (join) the parts together when the full string is needed
+
+Not suggested way
+{% highlight ruby%}
+nums = ""
+for n in range(20):
+    nums += str(n)   # slow and inefficient
+print nums
+{% endhighlight %}
+It Okay but not the best way
+{% highlight ruby%}
+nums = []
+for n in range(20):
+    nums.append(str(n))
+print "".join(nums)
+{% endhighlight %}
+It is the best way
+{% highlight ruby%}
+nums = [str(n) for n in range(20)]
+print "".join(nums)
+{% endhighlight %}
+
+In the instances where you are creating a new string from a pre-determined number of strings, using the addition operator is actually faster
+
+
+{% highlight ruby%}
+foo = 'foo'
+bar = 'bar'
+
+foobar = foo + bar  # This is good
+foo += 'ooo'  # This is bad, instead you should do:
+foo = ''.join([foo, 'ooo'])
+
+
+foobar = '%s%s' % (foo, bar) # It is OK
+foobar = '{0}{1}'.format(foo, bar) # It is better
+foobar = '{foo}{bar}'.format(foo=foo, bar=bar) # It is best
+{% endhighlight %}
+
+
+References: 
+
+[The Hitchhiker's guide to python](https://docs.python-guide.org/writing/structure/)
+
+
+
+
+
