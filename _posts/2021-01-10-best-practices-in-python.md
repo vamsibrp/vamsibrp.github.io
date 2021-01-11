@@ -80,22 +80,16 @@ The best way to import a module is by importing the whole module instead of a pa
 `Example:`
 
 Approach A:
-{% highlight ruby %}
 `from modu import *`
 x = sqrt(4)
-{% endhighlight %}
 
 Approach B:
-% highlight ruby %}
 from modu import sqrt
 x = sqrt(4)
-{% endhighlight %}
 
 Approach C:
-% highlight ruby %}
 import modu
 x = modu.sqrt(4)
-{% endhighlight %}
 
 Among the three approaches, C > B > A because of the readability and re-usability of the code.
 
