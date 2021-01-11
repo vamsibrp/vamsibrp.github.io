@@ -49,18 +49,7 @@ This can be done in two ways:
 ```
 It is suggested to use method 2 
 
-To give the individual tests import context, create a tests/context.py file:
-{% highlight ruby %}
-import os
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-{% endhightlight %}
-import sample
-Then, within the individual test modules, import the module like so:
-{% highlight ruby %}
-from .context import sample
-{% endhightlight %}
-This will always work as expected, regardless of installation method.
+
 
 PS: If you wish to learn more. Please click
 
