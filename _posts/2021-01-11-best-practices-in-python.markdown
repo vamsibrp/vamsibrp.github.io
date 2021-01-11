@@ -2,7 +2,7 @@
 layout: post
 title:  "Best Practices in Python"
 date:   2021-01-11 16:23:27 +0530
-categories: [Python]
+categories: Python
 ---
 
 ### Structuring The Project
@@ -61,6 +61,8 @@ Then, within the individual test modules, import the module like so:
 from .context import sample
 {% endhightlight %}
 This will always work as expected, regardless of installation method.
+
+PS: If you wish to learn more. Please ![click](https://docs.python-guide.org/writing/tests/)
 
 
 ### MakeFile
