@@ -62,7 +62,7 @@ from .context import sample
 {% endhighlight %}
 This will always work as expected, regardless of installation method.
 
-PS: If you wish to learn more. Please click
+PS: If you wish to learn more. Please [click](https://docs.python-guide.org/writing/tests/)
 
 
 ### MakeFile
