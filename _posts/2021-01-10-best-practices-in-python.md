@@ -123,6 +123,62 @@ Reusing a variable names: There is no efficiency gain when reusing names: the as
 It may be a good discipline to avoid assigning to a variable more than once, and it helps in grasping the concept of mutable and immutable types.
 
 
+### Mutable and immutable types
+
+Mutable types are those that allow in-place modification of the content. Typical mutables are lists and dictionaries. Immutable types provide no method for changing their content.
+
+Mutable Example:
+{% highlight ruby %}
+list = [1,2,3]
+list[0] = 5
+{% endhighlight %}
+Immutable Example
+{% highlight ruby %}
+x = 1
+x = x + 1
+{% endhighlight %}
+
+Using properly mutable types for things that are mutable in nature and immutable types for things that are fixed in nature helps to clarify the intent of the code.
+
+Strings are immutable.  so, appending each part to the string is inefficient because the entirety of the string is copied on each append. Instead, it is much more efficient to accumulate the parts in a list, which is mutable, and then glue (join) the parts together when the full string is needed
+
+Not suggested way
+{% highlight ruby %}
+nums = ""
+for n in range(20):
+    nums += str(n)   # slow and inefficient
+print nums
+{% endhighlight %}
+It Okay but not the best way
+{% highlight ruby %}
+nums = []
+for n in range(20):
+    nums.append(str(n))
+print "".join(nums)
+{% endhighlight %}
+It is the best way
+{% highlight ruby %}
+nums = [str(n) for n in range(20)]
+print "".join(nums)
+{% endhighlight %}
+
+In the instances where you are creating a new string from a pre-determined number of strings, using the addition operator is actually faster
+
+
+{% highlight ruby %}
+foo = 'foo'
+bar = 'bar'
+
+foobar = foo + bar  # This is good
+foo += 'ooo'  # This is bad, instead you should do:
+foo = ''.join([foo, 'ooo'])
+
+
+foobar = '%s%s' % (foo, bar) # It is OK
+foobar = '{0}{1}'.format(foo, bar) # It is better
+foobar = '{foo}{bar}'.format(foo=foo, bar=bar) # It is best
+{% endhighlight %}
+
 
 
 
