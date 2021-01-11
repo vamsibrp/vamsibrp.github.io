@@ -2,14 +2,15 @@
 layout: post
 title:  "Best Practices in Python"
 date:   2021-01-10 16:23:27 +0530
-categories: Python
+categories: Learn AI
+
 ---
 
 ### Structuring The Project
 
 In practical terms, “structure” means making clean code whose logic and dependencies are clear as well as how the files and folders are organized in the filesystem. In this section, we take a closer look at Python’s modules and import systems as they are the central elements to enforcing structure in your project.
 
-## Structuring The Repository
+### Structuring The Repository
 
 Just as any other aspect of your healthy development cycle, Repository structure is also a crucial part of your project
 Things people see when people visit your repo:
