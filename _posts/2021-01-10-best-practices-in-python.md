@@ -79,8 +79,36 @@ It is relatively easy to structure a Python project. Easy, here, means that you 
 * Heavy usage of global state or context
 * Spaghetti code
 * Ravioli code
-
 ```
+
+### Modules 
+
+Python modules are one of the main abstraction layers available . Abstraction layers allow separating code into parts holding related data and functionality. So, there arises a need to import one module into the other. This is done with the import and from ... import statements. These modules may be in-built, third-party or from our own code.
+
+PS: module names should be free off `.,_,!,` to make it short and readable
+
+The best way to import a module is by importing the whole module instead of a particular fucntion or using * 
+
+`Example:`
+
+Approach A:
+{% highlight ruby%}
+from modu import *
+x = sqrt(4)
+{% endhighlight %}
+Approach B:
+% highlight ruby%}
+from modu import sqrt
+x = sqrt(4)
+{% endhighlight %}
+Approach C:
+% highlight ruby%}
+import modu
+x = modu.sqrt(4)
+{% endhighlight %}
+
+Among the three approaches, C > B > A because of the readability and re-usability of the code.
+
 
 
 
