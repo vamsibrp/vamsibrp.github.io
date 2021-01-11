@@ -80,7 +80,7 @@ The best way to import a module is by importing the whole module instead of a pa
 `Example:`
 
 Approach A:
-`from modu import *`
+from modu import *
 x = sqrt(4)
 
 Approach B:
@@ -145,6 +145,21 @@ count = 1 instead of a = 1 . It makes code readable
 Reusing a variable names: There is no efficiency gain when reusing names: the assignments will have to create new objects anyway.
 
 It may be a good discipline to avoid assigning to a variable more than once, and it helps in grasping the concept of mutable and immutable types.
+
+### Mutable and immutable types
+
+Mutable types are those that allow in-place modification of the content. Typical mutables are lists and dictionaries. Immutable types provide no method for changing their content.
+
+Mutable Example:
+{% highlight ruby %}
+list = [1,2,3]
+list[0] = 5
+{% endhighlight %}
+Immutable Example:
+{% highlight ruby %}
+x = 1
+x = x + 1
+{% endhighlight %}
 
 
 
