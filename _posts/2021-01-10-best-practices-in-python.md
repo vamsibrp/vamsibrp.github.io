@@ -68,20 +68,6 @@ PS: If you wish to learn more. Please [click](https://docs.python-guide.org/writ
 ### MakeFile
 Stored as ./MakeFile in root repo. It provides user with utilities to build or install packages basing on the arguments. 
 
-
-### Structure of code
-
-It is relatively easy to structure a Python project. Easy, here, means that you do not have many constraints and that the module importing model is easy to grasp. This means it is also easy to do it poorly. Let us see some of the ways of poor code structures.
-
-```
-1. Multiple and messy circular dependencies
-1. Hidden coupling
-1. Heavy usage of global state or context
-1. Spaghetti code
-1. Ravioli code
-
-```
-
 ### Modules 
 
 Python modules are one of the main abstraction layers available . Abstraction layers allow separating code into parts holding related data and functionality. So, there arises a need to import one module into the other. This is done with the import and from ... import statements. These modules may be in-built, third-party or from our own code.
@@ -93,19 +79,19 @@ The best way to import a module is by importing the whole module instead of a pa
 Example:
 
 Approach A:
-{% highlight ruby%}
+{% highlight ruby %}
 from modu import *
 [...]
 x = sqrt(4)
 {% endhighlight %}
 Approach B:
-% highlight ruby%}
+% highlight ruby %}
 from modu import sqrt
 [...]
 x = sqrt(4)
 {% endhighlight %}
 Approach C:
-% highlight ruby%}
+% highlight ruby %}
 import modu
 [...]
 x = modu.sqrt(4)
