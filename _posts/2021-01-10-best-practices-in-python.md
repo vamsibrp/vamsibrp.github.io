@@ -81,35 +81,13 @@ It is relatively easy to structure a Python project. Easy, here, means that you 
 * Ravioli code
 ```
 
-### Modules 
+### Packages
 
-Python modules are one of the main abstraction layers available . Abstraction layers allow separating code into parts holding related data and functionality. So, there arises a need to import one module into the other. This is done with the import and from ... import statements. These modules may be in-built, third-party or from our own code.
+Any directory with an __init__.py file is considered a Python package. The different modules in the package are imported in a similar manner as plain modules, but with a special behavior for the __init__.py file, which is used to gather all package-wide definitions.
 
-PS: module names should be free off `.,_,!,` to make it short and readable
+Let's assume A file modu.py in the directory pack/ and it is imported with the statement import pack.modu. This statement will look for __init__.py file in pack and execute all of its top-level statements. Then it will look for a file named pack/modu.py and execute all of its top-level statements.
 
-The best way to import a module is by importing the whole module instead of a particular fucntion or using * 
-
-`Example:`
-
-Approach A:
-{% highlight ruby %}
-`from modu import *`
-x = sqrt(4)
-{% endhighlight %}
-
-Approach B:
-% highlight ruby %}
-from modu import sqrt
-x = sqrt(4)
-{% endhighlight %}
-
-Approach C:
-% highlight ruby %}
-import modu
-x = modu.sqrt(4)
-{% endhighlight %}
-
-Among the three approaches, C > B > A because of the readability and re-usability of the code.
+Leaving an __init__.py file empty is considered normal and even good practice
 
 
 
