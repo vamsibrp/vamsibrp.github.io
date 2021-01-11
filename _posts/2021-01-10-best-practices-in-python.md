@@ -185,6 +185,24 @@ nums = [str(n) for n in range(20)]
 print "".join(nums)
 {% endhighlight %}
 
+In the instances where you are creating a new string from a pre-determined number of strings, using the addition operator is actually faster
+
+
+{% highlight ruby %}
+foo = 'foo'
+bar = 'bar'
+
+foobar = foo + bar  # This is good
+foo += 'ooo'  # This is bad, instead you should do:
+foo = ''.join([foo, 'ooo'])
+
+
+foobar = '%s%s' % (foo, bar) # It is OK
+foobar = '{0}{1}'.format(foo, bar) # It is better
+foobar = '{foo}{bar}'.format(foo=foo, bar=bar) # It is best
+{% endhighlight %}
+
+
 
 
 
