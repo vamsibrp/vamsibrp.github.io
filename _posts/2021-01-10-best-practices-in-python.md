@@ -34,7 +34,7 @@ It is the second most important part of your repo after your code. This let's th
  Package and distribution management.
 
 ### Requirement file
-stored as ./requirement.txt present on the root of the repo. It specifies the pip dependencies required to contribute to the project: testing, building, and generating documentation. Refer [refernce page](https://pip.pypa.io/en/stable/user_guide/#requirements-files) for wide insights. If your project has no development dependencies, or if you prefer setting up a development environment via setup.py, this file may be unnecessary.
+stored as ./requirement.txt present on the root of the repo. It specifies the pip dependencies required to contribute to the project: testing, building, and generating documentation. Refer .... for wide insights. If your project has no development dependencies, or if you prefer setting up a development environment via setup.py, this file may be unnecessary.
 
 ### Documentation
 saved as ./docs/ on root folder. It conatains information about Package Reference documentation
@@ -62,7 +62,7 @@ from .context import sample
 {% endhightlight %}
 This will always work as expected, regardless of installation method.
 
-PS: If you wish to learn more. Please [click](https://docs.python-guide.org/writing/tests/)
+PS: If you wish to learn more. Please click
 
 
 ### MakeFile
