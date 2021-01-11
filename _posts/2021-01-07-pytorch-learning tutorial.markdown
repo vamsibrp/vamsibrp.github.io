@@ -274,6 +274,24 @@ print(f'Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3'
 
 {% endhighlight %}
 
+Till now, We have used auto-grad functions which are pre-defined.
+
+Now, we are going to define our own auto-grad functions. We have forward and backward functions that operate on tensors.Let's look into the implementation of this custom auto-grad functions
+
+class LegendrePolynomial3(torch.autograd.Function):
+
+    @staticmethod
+    def forward(ctx, input):
+        ctx.save_for_backward(input)
+        return 0.5 * (5 * input ** 3 - 3 * input)
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        input, = ctx.saved_tensors
+        return grad_output * 1.5 * (5 * input ** 2 - 1)
+
+
+
 
 
 

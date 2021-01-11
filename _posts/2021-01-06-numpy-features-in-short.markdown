@@ -49,8 +49,8 @@ Now, Let's see some other functionalities to initilaize nd-arrays with some cust
 * np.ndarray.reshape(a1,...ai,....an)` : reshapes the already existing ndarray. if any one ai is -1. it's size is deciding based on the size of teh ndarray
 
 * np.linspace(i,f, n)`: gives n points between i and f which are equi-distant
-Now, Let us code this out in Jupyter Notebook: 
 ```
+Now, Let us code this out in Jupyter Notebook: 
 ![Intro](/images/zeros.png)
 
 <h1>{{"Operations on Matrices"}}</h1>
