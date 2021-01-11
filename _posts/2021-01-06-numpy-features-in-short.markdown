@@ -22,11 +22,11 @@ Now, We know how to create an ndarray. It's time to play with that a bit
 
 `let us import numpy as np` (for the rest of the tutorial) 
 
-`Basics properties of ndarray`
+Basics properties of ndarray 
 ```
 * ndim: Gives the number of dimensions(axis)
 
-*shape: gives the shape of the ndarray
+* shape: gives the shape of the ndarray
 
 * size: gives the number of entries in the ndarray(i.e product of elements in shape)
 
@@ -37,28 +37,31 @@ Now, We know how to create an ndarray. It's time to play with that a bit
 ![Intro](/images/proper.png)
 
 Now, Let's see some other functionalities to initilaize nd-arrays with some custom initializations
+```
+* np.zeros((m,n)): gives a matrix of size mxn with all zeros
 
-`np.zeros((m,n))`: gives a matrix of size mxn with all zeros
+* np.ones((m,n)): gives a matrix of size mxn with all ones
 
-`np.ones((m,n))`: gives a matrix of size mxn with all ones
+* np.arange(m): gives a list of size m from 0 to m-1
 
-`np.arange(m)`: gives a list of size m from 0 to m-1
+* np.arange(i,f,s): gives a list of elements starting from i and with a step of s
 
-`np.arange(i,f,s)`: gives a list of elements starting from i and with a step of s
+* np.ndarray.reshape(a1,...ai,....an)` : reshapes the already existing ndarray. if any one ai is -1. it's size is deciding based on the size of teh ndarray
 
-`np.ndarray.reshape(a1,...ai,....an)` : reshapes the already existing ndarray. if any one ai is -1. it's size is deciding based on the size of teh ndarray
-
-`np.linspace(i,f, n)`: gives n points between i and f which are equi-distant
-
+* np.linspace(i,f, n)`: gives n points between i and f which are equi-distant
+Now, Let us code this out in Jupyter Notebook: 
+```
 ![Intro](/images/zeros.png)
 
 <h1>{{"Operations on Matrices"}}</h1>
  As said earlier numpy provides functionalities for scientific calculations to make life easy for a developer and reduce user written for loops to implement complex multiplications
 
+ Now, Let us code this in Jupyter Notebook or some-thing of your choice
+
 ![Intro](/images/matmul.png)
 
 
-**`adhoc` properties **
+### Adhoc Properties 
 {% highlight ruby %}
 >>>a                      # assume a.shape is (2,3)
 array([[0.82770259, 0.40919914, 0.54959369],
@@ -73,7 +76,7 @@ array([[0.82770259, 0.40919914, 0.54959369],
 
 `when argument like axis = 0 or 1 is mentioned then the arrays collapses along the mentioned axis and the operation happens along the mentioned axis`
 
-Example: 
+### Example: 
 {% highlight ruby %}
 >>> b
 array([[ 0,  1,  2,  3],
@@ -127,6 +130,8 @@ The function row_stack stacks similar to as vstack
 
 <h1>{{"Split function"}}</h1>
 `np.hsplit(a,(3,4))`: returns arrays split at columns 3,4 resulting into 3 arrays
+
+
 
 <h1>{{"Making Copies and Deep copy"}}</h1>
 Storing values in different forms is key to improve the perfomance.
