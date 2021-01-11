@@ -203,6 +203,31 @@ foobar = '{foo}{bar}'.format(foo=foo, bar=bar) # It is best
 {% endhighlight %}
 
 
+### Code style
+
+The beauty of python lies in it's readability which is at the heart of the design of the language because code is often read than written
+
+Let us go through some general concepts of python:
+
+```
+* Explicit function: the most explicit and straightforward manner is preferred.
+
+* One statement per line: allow one statement for more readability
+```
+
+### Function Arguments
+Arguments here in Python are passed into functions in 4 ways.
+
+1) Positional Arguments: Let us understand by example. wishFriend(Name,messege) is an example. It shows all the arguments are mandatory and have no default values. A function call can be leveraged here as wishFriend(messege = "Hello", Name = "Alex") but for the sake of readability we follow wishFriend("Alex","Hello").
+
+2)Keyword arguments: These differ from the positional arguments in the fact that all the fields are not mandatory and contains default values. For Example wishFriend(Name,messege,relation="classmate") has relation as a keyword argument. This is very useful where you can just update the function definition and still your existing function calls are not impacted. It's very useful hack(overloading)
+
+3)Arbitary argument list: The arguments are passed into the function as wishFriend(*args). We have to derefernce the arguments that is a list inside our function. It is not suggested to use these unless this is the only option to achieve this. This is because of the fact that it reduces the readability of code.
+
+4)Arbitary keyword argument dictionary: If the function requires an undetermined series of named arguments, it is possible to use the **kwargs construct. In the function body, kwargs will be a dictionary of all the passed named arguments that have not been caught by other keyword arguments in the function signature.
+
+The suggested types of function arguments are 1 or 2 because of readability, easy to change(2nd type), 3 or 4 are used when only there is a proven necessity to use.
+
 ### References: 
 
 [The Hitchhiker's guide to python](https://docs.python-guide.org/writing/structure/)
