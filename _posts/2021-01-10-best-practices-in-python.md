@@ -44,8 +44,8 @@ stored in /tests/ on root folder. writes all the test cases and test our code. T
 
 This can be done in two ways:
 ```
-1. Expect the package to be installed in site-packages.
-1. Use a simple (but explicit) path modification to resolve the package properly.
+* Expect the package to be installed in site-packages.
+* Use a simple (but explicit) path modification to resolve the package properly.
 ```
 It is suggested to use method 2 
 
