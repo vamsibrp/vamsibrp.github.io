@@ -68,36 +68,7 @@ PS: If you wish to learn more. Please [click](https://docs.python-guide.org/writ
 ### MakeFile
 Stored as ./MakeFile in root repo. It provides user with utilities to build or install packages basing on the arguments. 
 
-### Modules 
 
-Python modules are one of the main abstraction layers available . Abstraction layers allow separating code into parts holding related data and functionality. So, there arises a need to import one module into the other. This is done with the import and from ... import statements. These modules may be in-built, third-party or from our own code.
-
-PS: module names should be free off `.,_,!,` to make it short and readable
-
-The best way to import a module is by importing the whole module instead of a particular fucntion or using * 
-
-Example:
-
-Approach A:
-{% highlight ruby %}
-from modu import *
-[...]
-x = sqrt(4)
-{% endhighlight %}
-Approach B:
-% highlight ruby %}
-from modu import sqrt
-[...]
-x = sqrt(4)
-{% endhighlight %}
-Approach C:
-% highlight ruby %}
-import modu
-[...]
-x = modu.sqrt(4)
-{% endhighlight %}
-
-Among the three approaches, C > B > A because of the readability and re-usability of the code.
 
 
 
