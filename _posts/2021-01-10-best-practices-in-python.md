@@ -203,6 +203,10 @@ foobar = '{foo}{bar}'.format(foo=foo, bar=bar) # It is best
 {% endhighlight %}
 
 
+### References: 
+
+[The Hitchhiker's guide to python](https://docs.python-guide.org/writing/structure/)
+
 
 
 
