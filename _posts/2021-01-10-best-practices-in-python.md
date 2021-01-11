@@ -77,6 +77,28 @@ PS: module names should be free off `.,_,!,` to make it short and readable
 
 The best way to import a module is by importing the whole module instead of a particular fucntion or using `*` 
 
+`Example:`
+
+Approach A:
+{% highlight ruby %}
+`from modu import *`
+x = sqrt(4)
+{% endhighlight %}
+
+Approach B:
+% highlight ruby %}
+from modu import sqrt
+x = sqrt(4)
+{% endhighlight %}
+
+Approach C:
+% highlight ruby %}
+import modu
+x = modu.sqrt(4)
+{% endhighlight %}
+
+Among the three approaches, C > B > A because of the readability and re-usability of the code.
+
 ### Structure of code
 
 It is relatively easy to structure a Python project. Easy, here, means that you do not have many constraints and that the module importing model is easy to grasp. This means it is also easy to do it poorly. Let us see some of the ways of poor code structures.
