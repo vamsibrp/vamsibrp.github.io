@@ -23,24 +23,24 @@ Now, We know how to create an ndarray. It's time to play with that a bit
 `let us import numpy as np` (for the rest of the tutorial) 
 
 `Basics properties of ndarray`
+```
+* ndim: Gives the number of dimensions(axis)
 
-`ndim`: Gives the number of dimensions(axis)
+*shape: gives the shape of the ndarray
 
-`shape`: gives the shape of the ndarray
+* size: gives the number of entries in the ndarray(i.e product of elements in shape)
 
-`size`: gives the number of entries in the ndarray(i.e product of elements in shape)
+* dtype: gives the type of array
 
-`dtype`: gives the type of array
-
-`itemsize`: gives the size of the datatype
-
+* itemsize: gives the size of the datatype
+```
 ![Intro](/images/proper.png)
 
 Now, Let's see some other functionalities to initilaize nd-arrays with some custom initializations
 
-`np.zeros(m,n)`: gives a matrix of size mxn with all zeros
+`np.zeros((m,n))`: gives a matrix of size mxn with all zeros
 
-`np.ones(m,n)`: gives a matrix of size mxn with all ones
+`np.ones((m,n))`: gives a matrix of size mxn with all ones
 
 `np.arange(m)`: gives a list of size m from 0 to m-1
 
@@ -58,7 +58,7 @@ Now, Let's see some other functionalities to initilaize nd-arrays with some cust
 ![Intro](/images/matmul.png)
 
 
-`adhoc` properties
+**`adhoc` properties **
 {% highlight ruby %}
 >>>a                      # assume a.shape is (2,3)
 array([[0.82770259, 0.40919914, 0.54959369],
