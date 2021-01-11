@@ -90,6 +90,39 @@ Let's assume A file modu.py in the directory pack/ and it is imported with the s
 Leaving an __init__.py file empty is considered normal and even good practice
 
 
+### OOP
+
+Yes, Python implements OOP concepts but not as main programming paradigm. The way Python handles modules and namespaces gives the developer a natural way to ensure the encapsulation and separation of abstraction layers. So, python programmers tend not to use OOP unless business requirement comes in.
+
+There are some reasons to avoid unnecessary object-orientation. The problem, as pointed out by the discussions about functional programming, comes from the “state” part of the equation. In some architectures, typically web applications, multiple instances of Python processes are spawned as a response to external requests that happen simultaneously. In this case, holding some state in instantiated objects, which means keeping some static information about the world, is prone to concurrency problems or race conditions.
+
+Sometimes, between the initialization of the state of an object (usually done with the __init__() method) and the actual use of the object state through one of its methods, the world may have changed, and the retained state may be outdated. This and other issues led to the idea that using stateless functions is a better programming paradigm.
+
+A function’s implicit context is made up of any of the global variables or items in the persistence layer that are accessed from within the function. A function’s implicit context is made up of any of the global variables or items in the persistence layer that are accessed from within the function
+
+Carefully isolating functions with context and side-effects from functions with logic(called pure functions) allows the following benefits. In summary, pure functions are more efficient building blocks than classes and objects for some architectures because they have no context or side-effects.
+
+
+### Decorators
+
+
+
+### Context Managers
+
+
+### Dynamic typing
+
+Python is dynamically typed, which means that variables do not have a fixed type. The dynamic typing of Python is often considered to be a weakness, and indeed it can lead to complexities and hard-to-debug code. To avoid that the developer has to maintain good naming techniques
+
+say
+
+count = 1 instead of a = 1 . It makes code readable
+
+Reusing a variable names: There is no efficiency gain when reusing names: the assignments will have to create new objects anyway.
+
+It may be a good discipline to avoid assigning to a variable more than once, and it helps in grasping the concept of mutable and immutable types.
+
+
 
 
 
