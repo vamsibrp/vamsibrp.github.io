@@ -161,6 +161,30 @@ x = 1
 x = x + 1
 {% endhighlight %}
 
+Using properly mutable types for things that are mutable in nature and immutable types for things that are fixed in nature helps to clarify the intent of the code.
+
+Strings are immutable.  so, appending each part to the string is inefficient because the entirety of the string is copied on each append. Instead, it is much more efficient to accumulate the parts in a list, which is mutable, and then glue (join) the parts together when the full string is needed
+
+Not suggested way
+{% highlight ruby %}
+nums = ""
+for n in range(20):
+    nums += str(n)   # slow and inefficient
+print nums
+{% endhighlight %}
+It Okay but not the best way
+{% highlight ruby %}
+nums = []
+for n in range(20):
+    nums.append(str(n))
+print "".join(nums)
+{% endhighlight %}
+It is the best way
+{% highlight ruby %}
+nums = [str(n) for n in range(20)]
+print "".join(nums)
+{% endhighlight %}
+
 
 
 
