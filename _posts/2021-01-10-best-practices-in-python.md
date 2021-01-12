@@ -323,9 +323,124 @@ huge_string = ( "When assigning a string which spans multiple-lines to an variab
 )
 {% endhighlight %}
 
-### References: 
+We have seen too much above best practices in writing code. Now, Let's us see best practices for the documentation
 
-[The Hitchhiker's guide to python](https://docs.python-guide.org/)
+### Project Publication
+
+The basic things needed for the project publication are:
+```
+* Short Introduction of what can be done using this along-with one or two use cases
+* A tutorial which explains your primary use case.
+* An API reference listing all publicly available interfaces, parameters, and return values.
+* Developer documentation so that the other developers can understand and contribute.
+```
+
+### Sphinx
+
+Sphinx converts reStructuredText markup language into a range of output formats including HTML, LaTeX (for printable PDF versions), manual pages, and plain text.
+
+When run, Sphinx will import your code and using Python’s introspection features it will extract all function, method, and class signatures. It will also extract the accompanying docstrings, and compile it all into well structured and easily readable documentation for your project.
+
+### reStructuredText
+
+Most Python documentation is written with reStructuredText. It’s like Markdown, but with all the optional extensions built in.
+
+Now, let us see the code documenation in detail:
+
+### Commenting Sections of Code
+
+Do not use triple-quote strings to comment code. This is not a good practice, because line-oriented command-line tools such as grep will not be aware that the commented code is inactive. It is better to add hashes at the proper indentation level for every commented line.
+
+### DocStrings and taking advantage of them
+
+So, What is Doscstring?
+
+Docstring is something that is present inside the triple quotations of a python code. It helps as a documentation for a particular functionality and its a string, so doc+string=docstring
+
+Some tools use docstrings to embed more-than-documentation behavior, such as unit test logic. Remember, we earlier discussed about Sphinx.
+
+There is another tool called `Doctest` which will read all embedded docstrings that look like input from the Python commandline (prefixed with “>>>”) and run them, checking to see if the output of the command matches the text on the following line.
+
+This allows developers to embed real examples and usage of functions alongside their source code. As a side effect, it also ensures that their code is tested and works.
+
+{% highlight ruby %}
+def my_function(a, b):
+    """
+    >>> my_function(2, 3)
+    6
+    >>> my_function('a', 3)
+    'aaa'
+    """
+    return a * b
+{% endhighlight %}
+
+There is another notation called `Block Comments` which looks similar but usually used to explain what a section of code is doing, or the specifics of an algorithm while docstrings are more intended towards explaining other users of your code or you after some months.
+
+
+### Writing DocStrings
+
+The docstring should describe the function in a way that is easy to understand. For simple cases like trivial functions and classes embedding these docstrings is quite unnecessary. In larger or more complex projects however, it is often a good idea to give more information about a function, what it does, any exceptions it may raise, what it returns, or relevant details about the parameters.
+
+Refer [NumPy](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html) docstrings if you want to learn more. These are considered to best documented.
+
+There are many other tools like pycco, Ronn, Epydoc, MkDocs but it is adviced to use Sphinx.
+
+
+Now, Let's move to Test Suite which is as important as writing good code because you need to ship your code to make money!
+
+### Testing Your code
+
+Unit testing is supposed to be done by developer before shipping his code for furthur deployment to avoid un-wanted testing cycles.
+Here are some of the basic rules you follow while testing:
+
+```
+* 
+```
+
+We have some Modules, which helps in writing good test cases.
+
+### unittest
+`unittest` is available in standard python libarary so we just need to import and start working. so, Creating test cases is accomplished by subclassing unittest.TestCase.
+
+{% highlight ruby %}
+import unittest
+
+def fun(x):
+    return x + 1
+
+class MyTest(unittest.TestCase):
+    def test(self):
+        self.assertEqual(fun(3), 4)
+{% endhighlight %}
+
+### Doctest
+`Doctest` module searches for pieces of text that look like interactive Python sessions in docstrings and compare the execution results with the expected result present on the nect line of docstring. However, it's primary aim is not to do unit testing.
+
+Example:
+{% highlight ruby %}
+def square(x):
+    """Return the square of x.
+
+    >>> square(2)
+    4
+    >>> square(-2)
+    4
+    """
+
+    return x * x
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
+{%  endhighlight %}
+
+There are many tools available for the test suite. Some of them are [py.test](https://docs.pytest.org/en/latest/) , [hypothesis](https://hypothesis.readthedocs.io/en/latest/) , [tox](https://tox.readthedocs.io/en/latest/) , [mock](https://docs.python.org/3/library/unittest.mock.html) .
+
+I will eloborate them in future blogs but don't count on me.
+
+
+### References: 
+Some of the examples and statements are directly taken from [The Hitchhiker's guide to python](https://docs.python-guide.org/)
 
 
 
