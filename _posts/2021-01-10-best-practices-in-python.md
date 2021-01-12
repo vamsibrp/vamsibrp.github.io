@@ -439,6 +439,84 @@ There are many tools available for the test suite. Some of them are [py.test](ht
 I will eloborate them in future blogs but don't count on me.
 
 
+### Logging
+
+Logging is pretty much important consitituent of the development cycle. You need Logging because I will be a fool if I debug on live-servers.
+Formally, We have two purposes of logging:
+```
+* Diagnostic logging
+* Audit Logging
+```
+
+It is clear from the names, the reasons why we need logging. Why can't we just print whatever we want on console instead of writing into files and it saves space on servers too? Makes sense? Yes, It makes sense in console applications but on applications we just can't. 
+
+Proper logging helps us with file name, full path, function, and line number of the logging event and the best things is we can disable logs without making changes to code itself.
+
+Furthur, implementations about logging can be extensively found [here](https://docs.python-guide.org/writing/logging/)
+
+
+### common Mis-conceptions when you start as a beginner
+
+1). Mutable Default Arguments: 
+
+let's say we define:
+{% highlight ruby %}
+def append_to(element, to=[]):
+    to.append(element)
+    return to
+{%  endhighlight %}
+Now, we call
+{% highlight ruby %}
+my_list = append_to(12)         #function call 1
+my_other_list = append_to(13)   #function call 2
+{%  endhighlight %}
+we expect my_list contains only 12
+we expect my_other_list contains only 13
+
+But, my_list contains only 12
+my_other_list contains only 12,13
+
+Python’s default arguments are evaluated once when the function is defined, not each time the function is called. In the first function call, we have mutated the list, so it keeps mutated for the second function call.
+
+If we use `to = None` in the functio definition, it would have played the way we expected.
+
+
+2) Late Binding Closures:
+
+let's say we define: 
+{% highlight ruby %}
+def create_multipliers():
+    return [lambda x : i * x for i in range(5)]
+{%  endhighlight %}
+and now, we loop like:
+{% highlight ruby %}
+for multiplier in create_multipliers():
+    print(multiplier(2))
+{%  endhighlight %}
+we expect the results to be 0,2,4,6,8 but the result is 8,8,8,8,8   
+explanation:
+Python’s closures are late binding. This means that the values of variables used in closures are looked up at the time the inner function is called.
+
+Here, whenever any of the returned functions are called, the value of i is looked up in the surrounding scope at call time. By then, the loop has completed and i is left with its final value of 4.
+
+Solution:
+The most general solution is arguably a bit of a hack. Due to Python’s aforementioned behavior concerning evaluating default arguments to functions (see Mutable Default Arguments), you can create a closure that binds immediately to its arguments by using a default arg like so:
+{% highlight ruby %}
+def create_multipliers():
+    return [lambda x, i=i : i * x for i in range(5)]
+{%  endhighlight %}
+
+### Disable Bytecode (.pyc) Files
+
+By default, when executing Python code from files, the Python interpreter will automatically write a bytecode version of that file to disk. Theoretically, this behavior is on by default for performance reasons. Without these bytecode files, Python would re-generate the bytecode every time the file is loaded. So, let's get rid of them. but how?
+
+`export PYTHONDONTWRITEBYTECODE=1` environment variable set, Python will no longer write these files to disk, and your development environment will remain nice and clean.
+
+
+
+
+
+
 ### References: 
 Some of the examples and statements are directly taken from [The Hitchhiker's guide to python](https://docs.python-guide.org/)
 
