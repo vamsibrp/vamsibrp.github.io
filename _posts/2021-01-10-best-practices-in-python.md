@@ -308,11 +308,15 @@ with open('file.txt') as f:
 
 `Line Continuations` : When assigning a string which spans multiple-lines to an variable or some other operation do not use `""" ...."""` because of its fragility: a white space added to the end of the line, after the backslash, will break the code. Instead use parentheses around your elements. Left with an unclosed parenthesis on an end-of-line, the Python interpreter will join the next line until the parentheses are closed. The same behavior holds for curly and square braces.
 {% highlight ruby %}
-huge_string = """  When assigning a string which spans multiple-lines to an variable or some other operation do not use `""" ...."""` because of its fragility: a white space added to the end of the line, after the backslash, will break the code. Instead use parentheses around your elements. Left with an unclosed parenthesis """
+huge_string = """  When assigning a string which spans multiple-lines to an variable or some other operation do not use  because of its
+ fragility: a white space added to the end of the line, after the backslash, will break the code. Instead use parentheses around your 
+ elements. Left with an unclosed parenthesis """
 
 better use
 
-huge_string = ( "When assigning a string which spans multiple-lines to an variable or some other operation do not use `""" ...."""` because" "of its fragility: a white space added to the end of the line, after the backslash, will break the code. Instead use parentheses around " your elements. Left with an unclosed parenthesis")
+huge_string = ( "When assigning a string which spans multiple-lines to an variable or some other operation do not use  because"
+ "of its fragility: a white space added to the end of the line, after the backslash, will break the code. Instead use parentheses around "
+  "your elements. Left with an unclosed parenthesis")
 
 )
 {% endhighlight %}
