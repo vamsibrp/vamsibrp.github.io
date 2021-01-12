@@ -205,6 +205,8 @@ print(f'Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3'
 
 {% endhighlight %}
 
+### Auto-grad
+
 As mentioned earlier, PyTorch provides us the automatic differentiation also called auto-grad in short.
 
 It is pretty simple to use in practice. `Each Tensor represents a node in a computational graph`. If x is a Tensor that has x.requires_grad=True then `x.grad` is another Tensor holding the gradient of x with respect to some scalar value.
@@ -276,8 +278,9 @@ print(f'Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3'
 
 Till now, We have used auto-grad functions which are pre-defined.
 
-Now, we are going to define our own auto-grad functions. We have forward and backward functions that operate on tensors.Let's look into the implementation of this custom auto-grad functions
+Now, we are going to define our own auto-grad functions. We have forward and backward functions that operate on tensors.Let's look into the implementation of this custom auto-grad functions. In this example we define our model as y=a+b*P3(c+dx) instead of y=a+bx+cx^2+dx^3, where P3(x)=1/2(5x^3−3x) is the Legendre polynomial of degree three.
 
+{% highlight ruby %}
 class LegendrePolynomial3(torch.autograd.Function):
 
     @staticmethod
@@ -289,6 +292,132 @@ class LegendrePolynomial3(torch.autograd.Function):
     def backward(ctx, grad_output):
         input, = ctx.saved_tensors
         return grad_output * 1.5 * (5 * input ** 2 - 1)
+
+{% endhighlight %}
+
+Now, we have defined our custom auto-grad functions, we can directly use them as in the above examples.
+
+
+### nn Module 
+
+When building neural networks we frequently think of arranging the computation into layers, some of which have learnable parameters which will be optimized during learning. PyTorch provides higher-level abstractions over raw computational graphs that are useful for building neural networks.
+
+Here, the nn package serves this. It defines a set of Modules, which are roughly equivalent to neural network layers. It also defines a set of useful loss functions that are commonly used when training neural networks
+
+Let's see this by an example of fitting a sin curve on 3rd degree polynomial:
+
+{% highlight ruby %}
+import torch
+import math
+
+x = torch.linspace(-math.pi,math.pi,2000)
+y = torch.sin(x)
+
+p = torch.tensor([1,2,3])
+xx = x.unsqueeze(-1).pow(p)
+
+model = torch.nn.sequential(
+    torch.nn.linear(3,1),
+    torch.nn.flatten(0,1)
+)
+
+loss_func = torch.nn.MSELoss(reduction='sum')
+
+learning_rate = 1e-6
+
+for t in range(2000):
+    y_pred = model(xx)
+    loss = loss_func(y_pred,y)
+    if t%100 == 99 :
+        print( t , loss.item())
+
+    model.zero_grad()
+
+    loss.backward()
+
+    with torch.no_grad():
+        for param in model.parameters():
+            param -=learning_rate * param.grad
+
+linear_layer = model[0]
+
+print(f'a is : '{linear_layer.bias.item()}+{linear_layer.weight[:,0].item()})
+
+{% endhighlight %}
+
+
+### PyTorch : optim
+
+The optim package in PyTorch abstracts the idea of an optimization algorithm and provides implementations of commonly used optimization algorithms. Till now, we have updated the weights of our models by manually mutating the Tensors holding learnable parameters with torch.no_grad().
+
+Let us see where we can enhance the code by replacing things which are being done manually.
+
+{% highlight ruby %}
+
+import torch
+import math
+
+x = torch.linspace(-math.pi,math.pi,2000)
+y = torch.sin(x)
+
+p = torch.tensor([1,2,3])
+xx = x.unsqueeze(-1).pow(p)
+
+model = torch.nn.sequential(
+    torch.nn.linear(3,1),
+    torch.nn.flatten(0,1)
+)
+
+learning_rate = 1e-6
+
+loss_func = torch.nn.MSELoss(reduction='sum')
+
+optimiser = torch.optim.RMSProp(model.parameters(),lr = learning_rate)  # optim
+
+for t in range(2000):
+    y_pred = model(xx)
+
+    loss = loss_func(y_pred,y)
+
+    if t%100 == 99:
+        print(t,loss.item())
+    
+    optimser.zero_grad()    # This is because by default, gradients are accumulated in buffers
+
+    loss.backward()
+
+    optimiser.size()       # updates the learnable params
+
+linear_layer = model[0]
+
+print(f'a is : '{linear_layer.bias.item()}+{linear_layer.weight[:,0].item()})
+
+
+{% endhighlight %}
+
+
+Similar to above discussed auto-grad, we have custom nn Modules as-well.
+
+You can define your own Modules by subclassing nn.Module and defining a forward which receives input Tensors and produces output Tensors using other modules or other autograd operations on Tensors.
+
+Let's look into it in high level using the same examples as earlier
+
+{% highlight ruby %}
+class Polynomial3(torch.nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.a = torch.nn.Parameter(torch.randn(()))
+        self.b = torch.nn.Parameter(torch.randn(()))
+        self.c = torch.nn.Parameter(torch.randn(()))
+        self.d = torch.nn.Parameter(torch.randn(()))
+
+    def forward(self, x):
+        return self.a + self.b * x + self.c * x ** 2 + self.d * x ** 3
+
+    def string(self):
+        return f'y = {self.a.item()} + {self.b.item()} x + {self.c.item()} x^2 + {self.d.item()} x^3'
+
+{% endhighlight %}
 
 
 
