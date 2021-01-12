@@ -228,9 +228,104 @@ Arguments here in Python are passed into functions in 4 ways.
 
 The suggested types of function arguments are 1 or 2 because of readability, easy to change(2nd type), 3 or 4 are used when only there is a proven necessity to use.
 
+### Avoid magical stuff
+
+
+Pythons provides us many powerful tools but the good coding practice is to write code which passes through code analysis tools with out many hiccups. Some of the code analtic tools include pylint,pyflakes,MyPy, Prospector and Bandit. 
+```
+* change how objects are created and instantiated
+* change how the Python interpreter imports modules
+* It is even possible (and recommended if needed) to embed C routines in Python.
+
+```
+
+### Responsible coding
+
+Python has a very different philosophy, very different from highly defensive languages like Java, which give a lot of mechanisms to prevent any misuse, is expressed by the saying: “We are all responsible users”. This means that the developers have to follow some set rules to not break the code while writing the client codes. For example, using _ before and after internal methods is followed as standard and remember that one is free to break the rule.
+
+### Returning values
+
+As similar to any other language we can have multiple return statements for a particular depending upon the usage and conditional logic. There may be some cases where there might be an error or for some reason the function is not able to complete the task. In such cases, it is encouraged to check this at the start of the function. This makes the code readable and the logical part comes only after the error checks and their corresponding returns are written in code. There by reducing the distributed return points from the function.
+
+
+### Idioms
+
+A programming Idiom is to write te code universally accepted. Some common Python idioms follow:
+
+```
+* Unpacking
+* Create an ignored variable
+* Create a string from a list
+* Searching for an item in a collection
+* Zen of Python(PEP 20)
+* PEP 8
+* Auto-Formatting
+* Check if a variable equals a constant
+* Access a Dictionary Element
+```
+
+Some Other Idioms which helps us to play around with list:
+
+`List Comprehensions`: List comprehensions provide a concise way to create lists. i.e a list is created
+`Generator Comprehensions` : follows almost the same syntax as list comprehensions but return a generator instead of a list. Here, no list is created by just a generator
+
+Examples:
+
+{% highlight ruby %}
+[print(x) for x in sequence] # creates a list
+
+for x in sequence:
+    print(x)  # doesn't create a list but just prints
+{% endhighlight %}
+
+`Filtering a list` : To filter a list never remove elements from a list instead do:
+{% highlight ruby %}
+filtered_values = (value for value in sequence if value != x)   # using generator comprehensions
+{% endhighlight %}
+Modifying the original list can be risky if there are other variables referencing it. But you can use slice assignment if you really want to do that.
+{% highlight ruby %}
+sequence[::] = [value for value in sequence if value != x]
+{% endhighlight %}
+
+`Modifying the values in a list`: assignment never creates a new object. If two or more variables refer to the same list, changing one of them changes them all.
+{% highlight ruby %}
+a = [3, 4, 5]
+b = a                     # a and b refer to the same list object
+
+for i in range(len(a)):
+    a[i] += 3             # changing a actually effects b
+
+to avoid this we assign a new list to a made out of a.
+a = [i + 3 for i in a]   # now changing a doesn't impact b.
+
+{% endhighlight %}
+
+`Reading from a file`: Using with open function for opening a file. It ensures the close function is called when exited on error
+{% highlight ruby %}
+f = open('file.txt')
+a = f.read()
+print a
+f.close()
+
+with open('file.txt') as f:
+    for line in f:
+        print line
+{% endhighlight %}
+
+`Line Continuations` : When assigning a string which spans multiple-lines to an variable or some other operation do not use `""" ...."""` because of its fragility: a white space added to the end of the line, after the backslash, will break the code. Instead use parentheses around your elements. Left with an unclosed parenthesis on an end-of-line, the Python interpreter will join the next line until the parentheses are closed. The same behavior holds for curly and square braces.
+{% highlight ruby %}
+huge_string = """  When assigning a string which spans multiple-lines to an variable or some other operation do not use `""" ...."""` because of its fragility: a white space added to the end of the line, after the backslash, will break the code. Instead use parentheses around your elements. Left with an unclosed parenthesis """
+
+better use
+
+huge_string = ( "When assigning a string which spans multiple-lines to an variable or some other operation do not use `""" ...."""` because" "of its fragility: a white space added to the end of the line, after the backslash, will break the code. Instead use parentheses around " your elements. Left with an unclosed parenthesis")
+
+)
+{% endhighlight %}
+
 ### References: 
 
-[The Hitchhiker's guide to python](https://docs.python-guide.org/writing/structure/)
+[The Hitchhiker's guide to python](https://docs.python-guide.org/)
 
 
 
