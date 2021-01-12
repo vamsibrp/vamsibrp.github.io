@@ -126,13 +126,7 @@ A function’s implicit context is made up of any of the global variables or ite
 
 Carefully isolating functions with context and side-effects from functions with logic(called pure functions) allows the following benefits. In summary, pure functions are more efficient building blocks than classes and objects for some architectures because they have no context or side-effects.
 
-
-### Decorators
-
-
-
-### Context Managers
-
+`Read about Decorator and context managers`
 
 ### Dynamic typing
 
@@ -394,7 +388,15 @@ Unit testing is supposed to be done by developer before shipping his code for fu
 Here are some of the basic rules you follow while testing:
 
 ```
-* 
+* Focus on tiny bit of functionalities individually
+* Each test unit must be fully independent
+* Make the tests run fast or else you'll have to wait during your coding
+* Always run the full test suite before a coding session, and run it again after. 
+* Learn your tools and learn how to run a single test or a test case
+* Run all the test cases before you push your code to the repo
+* Use long and descriptive names for testing functions. This helps you identify the flow and easily catch the bugs.
+* always maintain a huge data set for testing. It will help you maintain your current code and add some feautures.
+* write test-cases covering all the scenarios and corner-cases.
 ```
 
 We have some Modules, which helps in writing good test cases.
@@ -513,12 +515,9 @@ By default, when executing Python code from files, the Python interpreter will a
 `export PYTHONDONTWRITEBYTECODE=1` environment variable set, Python will no longer write these files to disk, and your development environment will remain nice and clean.
 
 
-
-
-
-
 ### References: 
-Some of the examples and statements are directly taken from [The Hitchhiker's guide to python](https://docs.python-guide.org/)
+This is written taking inspiration from learn by writing philosophy. 
+Some of the examples and statements are directly taken from [The Hitchhiker's guide to python](https://docs.python-guide.org/).
 
 
 
