@@ -51,7 +51,7 @@ tail -n 3000 cooking.stackexchange.txt > cooking.valid
 
 ### Training our classifier
 
-
+{% highlight ruby %}
 >>> import fasttext
 >>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train")
 Read 0M words
@@ -70,36 +70,36 @@ Progress:  91.5% words/sec/thread:   93885 lr:  0.008476 avg.loss: 10.105961 ETA
 Progress: 100.0% words/sec/thread:   93142 lr: -0.000022 avg.loss: 10.047604 ETA
 Progress: 100.0% words/sec/thread:   93105 lr:  0.000000 avg.loss: 10.047604 ETA:   
 0h 0m 0s
-
+{% endhighlight %}
 
 The `input` argument indicates the file containing the training examples.
 
 so we have our model tarined in `model` variable. We can also call `save_model` to save it as a file and load it later with `load_model` function. 
-
+{% highlight ruby %}
 model.save_model("model_cooking.bin")
-
+{% endhighlight %}
 Let's play around now with our `model`:
 
 We are good to predict based on the training we did. Let's do it:
-
+{% highlight ruby %}
 >>> model.predict("is it safe to go to an restaurant")
 (('__label__food-safety',), array([0.09332366]))
 >>> model.predict("is it safe to go to an restaurant?")
 (('__label__food-safety',), array([0.09150641]))
-
+{% endhighlight %}
 Did you observe?: Adding `?` changed the prediction value a bit but the prediction label is same. With this we can expect our model to perform bad under certain scenario. So we need to improve our model. Let's dig deep into that now.
 
 
 ### Making the model Accurate:
 
 The first thing that comes to my mind is why can't we pre-process the data. Like remove unnecessry spaces, special characters, and doing some cool pre-processing stuff like identifying `@` as `a`. It's cool but we shall not do that now.
-
+{% highlight ruby %}
 >>> cat cooking.stackexchange.txt | sed -e "s/\([.\!?,'/()]\)/ \1 /g" | tr "[:upper:]" "[:lower:]" > cooking.preprocessed.txt
 >> head -n 12404 cooking.preprocessed.txt > cooking.train
 >> tail -n 3000 cooking.preprocessed.txt > cooking.valid
-
+{% endhighlight %}
 Now, let's train the model
-
+{% highlight ruby %}
 >>> import fasttext
 >>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train")
 Read 0M words
@@ -118,16 +118,16 @@ Progress:  91.1% words/sec/thread:  102545 lr:  0.008864 avg.loss: 10.017081 ETA
 Progress: 100.0% words/sec/thread:  102544 lr: -0.000008 avg.loss:  9.952509 ETA
 Progress: 100.0% words/sec/thread:  102519 lr:  0.000000 avg.loss:  9.952509 ETA:   
 0h 0m 0s
-
+{% endhighlight %}
 You can clearly see the number of words came down from `14543` to `8952`. This means our pre-processing combined various forms of same word.
 
 let's predict the same sentences as earlier 
-
+{% highlight ruby %}
 >>> model.predict("is it safe to go to an restaurant")
 (('__label__food-safety',), array([0.11207097]))
 >>> model.predict("is it safe to go to an restaurant?")
 (('__label__food-safety',), array([0.15131585]))
-
+{% endhighlight %}
 You can clearly see the prediction value has gone up significantly.
 
 How can we even improve the performace?
@@ -137,12 +137,12 @@ Altering the learning rate and epoch,batch size??
 ### More epoch
 
 By default, fastText sees each training example only five times during training, which is pretty small, given that our training set only have 12k training examples.
-
+{% highlight ruby %}
 >>> import fasttext
 >>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train",epoch=25)
-
+{% endhighlight %}
 let's predict now:
-
+{% highlight ruby %}
 >>> model.predict("is it safe to go to an restaurant")
 (('__label__food-safety',), array([0.43556383]))
 >>> model.predict("is it safe to go to an restaurant?")
@@ -150,12 +150,13 @@ let's predict now:
 
 >>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
 (3000, 0.518, 0.22401614530776992)
+{% endhighlight %}
 ```
 Here, 3000 is the size of sample we tested on. 0.518 is the precision and 0.224 is the recall rate. 
 The precision is the number of correct labels among the labels predicted by fastText. The recall is the number of labels that successfully were predicted, among all the real labels.
 
 Example: 
->>> model.predict("is it safe to go to an restaurant?",k=5)
+model.predict("is it safe to go to an restaurant?",k=5)
 (('__label__food-safety', '__label__beef', '__label__storage-method', '__label__chicken', '__label__storage-lifetime'), array([0.67451811, 0.05916279, 0.02460619, 0.02096862, 0.02020765])) 
 
 the query has 2 real labels(assumption)
@@ -170,53 +171,53 @@ Now, let's play with learning rate
 
 Learning rate corresponds to how much the model changes after processing each example. A learning rate of 0 would mean that the model does not change at all, and thus, does not learn anything. Good values of the learning rate are in the range 0.1 - 1.0
 
-
+{% highlight ruby %}
 >>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train", lr=1.0 ,epoch=25)
 
 >>> model.predict("is it safe to go to an restaurant")
 (('__label__food-safety',), array([0.63764799]))
 >>> model.predict("is it safe to go to an restaurant?")
 (('__label__food-safety',), array([0.67451811]))
-
+{% endhighlight %}
 Just wow!! prediction value is getting bigger and bigger
-
+{% highlight ruby %}
 >>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
 (3000, 0.585, 0.25299120657344676)
-
+{% endhighlight %}
 Now, let's try with the combination of words as one. In other words, use word n-grams instead of uni-grams used.
 
 ### Word N-grams
-
+{% highlight ruby %}
 >>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train", lr=1.0 ,epoch=25,wordNgrams=2)
 
 >>> model.predict("is it safe to go to an restaurant")
 (('__label__food-safety',), array([0.96595222]))
-
+{% endhighlight %}
 96% prediction value is toomn good to have. However, let's test on validation set.
-
+{% highlight ruby %}
 >>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
 (3000, 0.6026666666666667, 0.26063139685743114)
-
+{% endhighlight %}
 Now, we have achieved 60% precision. It is good for a beginner.
 
 ### using loss fucntions of our choice:
 
 let try using Hierarchical softmax. we can enable this using loss = 'hs'. let's try this out with `bucket=200000, dim=50`
-
+{% highlight ruby %}
 >>> model.predict("is it safe to go to an restaurant")
 (('__label__food-safety',), array([0.85158682]))
-
+{% endhighlight %}
 Interesting, performance, went down.
-
+{% highlight ruby %}
 >>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
 (3000, 0.5916666666666667, 0.2558742972466484)
-
+{% endhighlight %}
 When we want to assign a document to multiple labels, we can still use the softmax loss and play with the parameters for prediction, namely the number of labels to predict and the threshold for the predicted probability. However playing with these arguments can be tricky and unintuitive since the probabilities must sum to 1.
 
 A convenient way to handle multiple labels(Multi-label classification) is to use independent binary classifiers for each label. This can be done with -loss one-vs-all or -loss ova
 
 ### Multi-label classification
-
+{% highlight ruby %}
 >>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train", lr=0.5 ,epoch=25,wordNgrams=2, bucket=200000, dim=50, loss="ova")
 
 >>> model.predict("is it safe to go to an restaurant",k=-1,threshold=0.5)
@@ -224,6 +225,8 @@ A convenient way to handle multiple labels(Multi-label classification) is to use
 
 >>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
 (3000, 0.6056666666666667, 0.2619287876603719)
+
+{% endhighlight %}
 
 I'll try to im provise and take precision and recall and continue the blog later some-time.
 
