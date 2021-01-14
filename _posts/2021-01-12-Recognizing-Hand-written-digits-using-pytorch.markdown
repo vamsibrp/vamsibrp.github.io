@@ -18,4 +18,10 @@ Refer [tutorial](https://pytorch.org/tutorials/beginner/nn_tutorial.html) if you
 
 In this tutorial, I will be going forward assuming that you have gone through the mentioned tutorial at-least once.
 
+### Getting started
+
+I wish to create an anaconda environment and import all the required packages into that environment. Follow [this](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+
+
 
