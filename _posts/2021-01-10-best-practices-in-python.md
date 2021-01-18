@@ -14,12 +14,11 @@ In practical terms, “structure” means making clean code whose logic and depe
 Just as any other aspect of your healthy development cycle, Repository structure is also a crucial part of your project
 Things people see when people visit your repo:
 
-```
+
 * Project Name
 * Project Description
 * File structures
 
-```
 We generally take care of Name and description but sometimes fail to maintain good structure. To avoid having massive dump of file on your repo, we need to maintain a proper folder structure in the Repository
 
 Here are some of the key aspects of the respository:
@@ -43,10 +42,9 @@ saved as ./docs/ on root folder. It conatains information about Package Referenc
 stored in /tests/ on root folder. writes all the test cases and test our code. To test our code we need to import our modules into our test suite.
 
 This can be done in two ways:
-```
 * Expect the package to be installed in site-packages.
 * Use a simple (but explicit) path modification to resolve the package properly.
-```
+
 It is suggested to use method 2 
 
 To give the individual tests import context, create a tests/context.py file:
@@ -97,21 +95,21 @@ Among the three approaches, C > B > A because of the readability and re-usabilit
 
 It is relatively easy to structure a Python project. Easy, here, means that you do not have many constraints and that the module importing model is easy to grasp. This means it is also easy to do it poorly. Let us see some of the ways of poor code structures.
 
-```
+
 * Multiple and messy circular dependencies
 * Hidden coupling
 * Heavy usage of global state or context
 * Spaghetti code
 * Ravioli code
-```
+
 
 ### Packages
 
-Any directory with an __init__.py file is considered a Python package. The different modules in the package are imported in a similar manner as plain modules, but with a special behavior for the __init__.py file, which is used to gather all package-wide definitions.
+Any directory with an `__init__.py` file is considered a Python package. The different modules in the package are imported in a similar manner as plain modules, but with a special behavior for the `__init__.py` file, which is used to gather all package-wide definitions.
 
-Let's assume A file modu.py in the directory pack/ and it is imported with the statement import pack.modu. This statement will look for __init__.py file in pack and execute all of its top-level statements. Then it will look for a file named pack/modu.py and execute all of its top-level statements.
+Let's assume A file modu.py in the directory pack/ and it is imported with the statement import pack.modu. This statement will look for `__init__.py` file in pack and execute all of its top-level statements. Then it will look for a file named pack/modu.py and execute all of its top-level statements.
 
-Leaving an __init__.py file empty is considered normal and even good practice
+Leaving an `__init__.py` file empty is considered normal and even good practice
 
 
 ### OOP
@@ -203,11 +201,11 @@ The beauty of python lies in it's readability which is at the heart of the desig
 
 Let us go through some general concepts of python:
 
-```
+
 * Explicit function: the most explicit and straightforward manner is preferred.
 
 * One statement per line: allow one statement for more readability
-```
+
 
 ### Function Arguments
 Arguments here in Python are passed into functions in 4 ways.
@@ -226,12 +224,12 @@ The suggested types of function arguments are 1 or 2 because of readability, eas
 
 
 Pythons provides us many powerful tools but the good coding practice is to write code which passes through code analysis tools with out many hiccups. Some of the code analtic tools include pylint,pyflakes,MyPy, Prospector and Bandit. 
-```
+
 * change how objects are created and instantiated
 * change how the Python interpreter imports modules
 * It is even possible (and recommended if needed) to embed C routines in Python.
 
-```
+
 
 ### Responsible coding
 
@@ -246,7 +244,6 @@ As similar to any other language we can have multiple return statements for a pa
 
 A programming Idiom is to write te code universally accepted. Some common Python idioms follow:
 
-```
 * Unpacking
 * Create an ignored variable
 * Create a string from a list
@@ -256,7 +253,7 @@ A programming Idiom is to write te code universally accepted. Some common Python
 * Auto-Formatting
 * Check if a variable equals a constant
 * Access a Dictionary Element
-```
+
 
 Some Other Idioms which helps us to play around with list:
 
@@ -326,12 +323,12 @@ We have seen too much above best practices in writing code. Now, Let's us see be
 ### Project Publication
 
 The basic things needed for the project publication are:
-```
+
 * Short Introduction of what can be done using this along-with one or two use cases
 * A tutorial which explains your primary use case.
 * An API reference listing all publicly available interfaces, parameters, and return values.
 * Developer documentation so that the other developers can understand and contribute.
-```
+
 
 ### Sphinx
 
@@ -391,7 +388,6 @@ Now, Let's move to Test Suite which is as important as writing good code because
 Unit testing is supposed to be done by developer before shipping his code for furthur deployment to avoid un-wanted testing cycles.
 Here are some of the basic rules you follow while testing:
 
-```
 * Focus on tiny bit of functionalities individually
 * Each test unit must be fully independent
 * Make the tests run fast or else you'll have to wait during your coding
@@ -401,7 +397,6 @@ Here are some of the basic rules you follow while testing:
 * Use long and descriptive names for testing functions. This helps you identify the flow and easily catch the bugs.
 * always maintain a huge data set for testing. It will help you maintain your current code and add some feautures.
 * write test-cases covering all the scenarios and corner-cases.
-```
 
 We have some Modules, which helps in writing good test cases.
 
@@ -449,10 +444,10 @@ I will eloborate them in future blogs but don't count on me.
 
 Logging is pretty much important consitituent of the development cycle. You need Logging because I will be a fool if I debug on live-servers.
 Formally, We have two purposes of logging:
-```
+
 * Diagnostic logging
 * Audit Logging
-```
+
 
 It is clear from the names, the reasons why we need logging. Why can't we just print whatever we want on console instead of writing into files and it saves space on servers too? Makes sense? Yes, It makes sense in console applications but on applications we just can't. 
 
