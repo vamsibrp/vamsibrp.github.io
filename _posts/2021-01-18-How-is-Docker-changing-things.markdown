@@ -199,7 +199,7 @@ I'll come up with a working example and with the best-practices to be followed w
 
 ### References:
 
-1. [Github](https://github.com/docker/getting-started) repository for docker.
+[Github](https://github.com/docker/getting-started) repository for docker.
 
 
 
