@@ -52,11 +52,8 @@ A Dockerfile is simply a text-based script of instructions that is used to creat
 Make sure we have Dockerfile inside the root directory of the project. Once we have Dockerfile, build the container image using the `docker build` command.
 
 {% highlight ruby %}
-{% endhihlight %}
-
-{% highlight ruby %}
 docker build -t {name} .
-{% endhihlight %}
+{% endhighlight %}
 
 The `-t` here tags the image created now to the `name` we name the image.
 
@@ -70,7 +67,7 @@ we will use `docker run` command for this purpose
 
 {% highlight ruby %}
 docker run -dp {host-port}:{container-port} {name}
-{% endhihlight %}
+{% endhighlight %}
 Here ,the flag d means detached and running in back-ground and flag p means creating a mapping between the host's port to the container's port 
 
 Example: 
@@ -81,9 +78,8 @@ Let me pull Redis from Docker hub. Refer [this](https://hub.docker.com/_/redis)
 
 {% highlight ruby %}
 (base)  vamsibrp.github.io % docker run -dp 6379:6379 redis
-e7c67adb991e1300bb86.....0d132646a2fddf073131a9eaec71c10ff1599c
-                                                                % 
-{% endhihlight %}
+e7c67adb991e1300bb86.....0d132646a2fddf073131a9eaec71c10ff1599c 
+{% endhighlight %}
 
 This created a redis container on 6379 port. If you are on mac or Windows you can see an instance getting initiated with a random name in Docker Desktop app.
 
@@ -97,7 +93,7 @@ Now we might encounter an issue :
 {% highlight ruby %}
 docker: Error response from daemon: driver failed programming external connectivity on endpoint laughing_burnell 
 (bb242b2ca4d67eba76e79474fb36bb5125708ebdabd7f45c8eaf16caaabde9dd): Bind for 0.0.0.0:6379 failed: port is already allocated.
-{% endhihlight %}
+{% endhighlight %}
 
 Remember, our container on port 6379 is already running. It our responsibility to stop and remove the running container from the docker. Note here that stoping and removing both need to be done as a best practice.
 
@@ -107,7 +103,7 @@ we work with the container id's to identify them. So `docker ps` command gives t
 docker stop {container-ID}   # stops the container with given ID
 
 docker rm {container-ID}     # removes the conatiner with given ID
-{% endhihlight %}
+{% endhighlight %}
 
 Now, we can follow the process of building the image and running the image as explained in the previous steps.
 
@@ -189,7 +185,7 @@ Start up the application stack using the docker-compose up command. We'll add th
 docker-compose up -d   # start the container stack
 
 docker-compose down    # simply tear-down or stop the container stack.
-{% endhihlight %}
+{% endhighlight %}
 
 This ends the basic tutorial on Docker. It is short but a crisp idea of Docker and how it can impact development lifecycles.
 
