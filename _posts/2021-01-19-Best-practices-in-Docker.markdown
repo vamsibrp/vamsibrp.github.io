@@ -110,7 +110,15 @@ ENV PATH=/root/.local:$PATH
 CMD [ "python", "./server.py" ]
 {% endhighlight %}
 
-Note that we have a two stage build where we name only the first one as builder. We name a stage by adding an AS <NAME> to the FROM instruction and we use this name in the COPY instruction where we want to copy only the necessary files to the final image.
+Note that we have a two stage build where we name only the first one as builder. We name a stage by adding an AS NAME to the FROM instruction and we use this name in the COPY instruction where we want to copy only the necessary files to the final image.
+
+These are some of the best practices to be followed. There might be many more and I'll keep Updating this blog for many more practices I come across as I learn deeper.
+
+### References
+
+1. docker/getting-started image.
+2. [Intro-file-to-better-practices-in-docker](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/)
+3. [Containerized-python-development-part-I](https://www.docker.com/blog/containerized-python-development-part-1/)
 
 
 
