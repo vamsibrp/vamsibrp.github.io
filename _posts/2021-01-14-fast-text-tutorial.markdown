@@ -53,7 +53,7 @@ tail -n 3000 cooking.stackexchange.txt > cooking.valid
 
 {% highlight ruby %}
 >>> import fasttext
->>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train")
+>>> model = fasttext.train_supervised(input="/path/to/directory/cooking.stackexchange/cooking.train")
 Read 0M words
 Number of words:  14543
 Number of labels: 735
@@ -101,7 +101,7 @@ The first thing that comes to my mind is why can't we pre-process the data. Like
 Now, let's train the model
 {% highlight ruby %}
 >>> import fasttext
->>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train")
+>>> model = fasttext.train_supervised(input="/path/to/directory/cooking.stackexchange/cooking.train")
 Read 0M words
 Number of words:  8952
 Number of labels: 735
@@ -139,7 +139,7 @@ Altering the learning rate and epoch,batch size??
 By default, fastText sees each training example only five times during training, which is pretty small, given that our training set only have 12k training examples.
 {% highlight ruby %}
 >>> import fasttext
->>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train",epoch=25)
+>>> model = fasttext.train_supervised(input="/path/to/directory/cooking.stackexchange/cooking.train",epoch=25)
 {% endhighlight %}
 let's predict now:
 {% highlight ruby %}
@@ -148,7 +148,7 @@ let's predict now:
 >>> model.predict("is it safe to go to an restaurant?")
 (('__label__food-safety',), array([0.32207996]))
 
->>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
+>>> model.test("/path/to/directory/cooking.stackexchange/cooking.valid") 
 (3000, 0.518, 0.22401614530776992)
 {% endhighlight %}
 ```
@@ -172,7 +172,7 @@ Now, let's play with learning rate
 Learning rate corresponds to how much the model changes after processing each example. A learning rate of 0 would mean that the model does not change at all, and thus, does not learn anything. Good values of the learning rate are in the range 0.1 - 1.0
 
 {% highlight ruby %}
->>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train", lr=1.0 ,epoch=25)
+>>> model = fasttext.train_supervised(input="/path/to/directory/cooking.stackexchange/cooking.train", lr=1.0 ,epoch=25)
 
 >>> model.predict("is it safe to go to an restaurant")
 (('__label__food-safety',), array([0.63764799]))
@@ -181,21 +181,21 @@ Learning rate corresponds to how much the model changes after processing each ex
 {% endhighlight %}
 Just wow!! prediction value is getting bigger and bigger
 {% highlight ruby %}
->>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
+>>> model.test("/path/to/directory/cooking.stackexchange/cooking.valid") 
 (3000, 0.585, 0.25299120657344676)
 {% endhighlight %}
 Now, let's try with the combination of words as one. In other words, use word n-grams instead of uni-grams used.
 
 ### Word N-grams
 {% highlight ruby %}
->>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train", lr=1.0 ,epoch=25,wordNgrams=2)
+>>> model = fasttext.train_supervised(input="/path/to/directory/cooking.stackexchange/cooking.train", lr=1.0 ,epoch=25,wordNgrams=2)
 
 >>> model.predict("is it safe to go to an restaurant")
 (('__label__food-safety',), array([0.96595222]))
 {% endhighlight %}
 96% prediction value is toomn good to have. However, let's test on validation set.
 {% highlight ruby %}
->>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
+>>> model.test("/path/to/directory/cooking.stackexchange/cooking.valid") 
 (3000, 0.6026666666666667, 0.26063139685743114)
 {% endhighlight %}
 Now, we have achieved 60% precision. It is good for a beginner.
@@ -209,7 +209,7 @@ let try using Hierarchical softmax. we can enable this using loss = 'hs'. let's 
 {% endhighlight %}
 Interesting, performance, went down.
 {% highlight ruby %}
->>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
+>>> model.test("/path/to/directory/cooking.stackexchange/cooking.valid") 
 (3000, 0.5916666666666667, 0.2558742972466484)
 {% endhighlight %}
 When we want to assign a document to multiple labels, we can still use the softmax loss and play with the parameters for prediction, namely the number of labels to predict and the threshold for the predicted probability. However playing with these arguments can be tricky and unintuitive since the probabilities must sum to 1.
@@ -218,12 +218,12 @@ A convenient way to handle multiple labels(Multi-label classification) is to use
 
 ### Multi-label classification
 {% highlight ruby %}
->>> model = fasttext.train_supervised(input="/Users/bhargav/Downloads/cooking.stackexchange/cooking.train", lr=0.5 ,epoch=25,wordNgrams=2, bucket=200000, dim=50, loss="ova")
+>>> model = fasttext.train_supervised(input="/path/to/directory/cooking.stackexchange/cooking.train", lr=0.5 ,epoch=25,wordNgrams=2, bucket=200000, dim=50, loss="ova")
 
 >>> model.predict("is it safe to go to an restaurant",k=-1,threshold=0.5)
 (('__label__food-safety',), array([0.99864298]))
 
->>> model.test("/Users/bhargav/Downloads/cooking.stackexchange/cooking.valid") 
+>>> model.test("/path/to/directory/cooking.stackexchange/cooking.valid") 
 (3000, 0.6056666666666667, 0.2619287876603719)
 
 {% endhighlight %}

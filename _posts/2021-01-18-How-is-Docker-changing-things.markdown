@@ -7,7 +7,7 @@ categories: learn AI
 
 ### what is Docker?
 
-Let me give the tetbook definition at the start. `Docker` is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
+Let me give the textbook definition at the start. `Docker` is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
 
 Okay, let me explain why Docker is changing things.
 
@@ -77,7 +77,7 @@ Let me pull Redis from Docker hub. Refer [this](https://hub.docker.com/_/redis)
 `docker pull redis` get the redis image from docker-hub
 
 {% highlight ruby %}
-(base)  vamsibrp.github.io % docker run -dp 6379:6379 redis
+(base)  random.file.path % docker run -dp 6379:6379 redis
 e7c67adb991e1300bb86.....0d132646a2fddf073131a9eaec71c10ff1599c 
 {% endhighlight %}
 
@@ -111,11 +111,9 @@ Now, we can follow the process of building the image and running the image as ex
 
 This is important to learn because we as developers should help each others with our contributions to docker-hub. So we should have our hands-on shipping to Docker-hub
 
-```
 * Create a Docker-Hub Repository on the web-site
 * Now, we need to push our local-image to Docker-Hub repository.
 
-```
 
 You can DIY the first step.
 

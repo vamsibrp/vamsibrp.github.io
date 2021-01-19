@@ -422,6 +422,16 @@ class Polynomial3(torch.nn.Module):
 
 
 
+We arrive at the end of the this tutorial about the basic's of pytorch. I wish to write a blog running a model and improvising the model intutively. Don't wait for that. Anyway, go ahead and explore on your own. Lots and lots of cool stuff out on the internet.
+
+
+### Reference
+
+1. [PyTorch](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html) official documentation.
+
+
+
+
 
 
 
