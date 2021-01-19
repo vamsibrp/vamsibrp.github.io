@@ -189,7 +189,9 @@ This ends the basic tutorial on Docker. It is short but a crisp idea of Docker a
 
 ### Up-Next
 
-I'll come up with a working example and with the best-practices to be followed while writing Dockerfile
+Refer [Best-practices-in-dockerfile](https://vamsibrp.github.io/Best-practices-in-Docker/) for best practices in writing a dockerfile to create an image.
+
+I'll come up with a working example to be followed while writing Dockerfile in future as I dive deep.
 
 ### References:
 
