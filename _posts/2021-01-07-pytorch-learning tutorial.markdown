@@ -63,7 +63,7 @@ cpu
 {% endhighlight %}
 
 
-<h1>{{"Operations opn tensors"}}</h1>
+<h1>{{"Operations on tensors"}}</h1>
 If GPU is available to be used we move the tensor to GPU
 {% highlight ruby %}
 if torch.cuda.is_available():
