@@ -11,13 +11,13 @@ Let me give the textbook definition at the start. `Docker` is an open platform f
 
 Okay, let me explain why Docker is changing things.
 
-As a developer who followed tarditional practices in my 2.5y long carrer, I know how long does it take to make the code after the it is writtem. Shipping, testing and deploying are always an issue if any link in the flow fails the expectations. Docker mainly helps the developer in this, it solves the "it was working on my machine" thing.
+As a developer who followed tarditional practices in my 2.5y long carrer, I know how long does it take to make the code after the it is written. Shipping, testing and deploying are always an issue if any link in the flow fails the expectations. Docker mainly helps the developer in this, it solves the "it was working on my machine" thing.
 
 We now understand what Docker was trying to solve. There is another concept of `Containers` which forms as a base to the concept of Dockers.
 
 ### What is Container?
 
-Just observe , Docker, container and the logo of docker. The theme might have come from the inspiration of Shipping goods through sea. In this analogy once the goods are loaded into the container, what ever happens inside the containers are independent of things happening outside. This is same with our Container as well. Let's get into what a container is.
+Just observe , Docker, container and the logo of docker. The theme might have come from the inspiration of Shipping goods through sea. In this analogy once the goods are loaded into the container, what ever happens inside the containers is independent . This is same with our Container as well. Let's get into what a container is.
 
 A container is simply another process on your machine that has been isolated from all other processes on the host machine. That isolation leverages kernel namespaces and cgroups, features that have been in Linux for a long time. Docker has worked to make these capabilities approachable and easy to use.
 
