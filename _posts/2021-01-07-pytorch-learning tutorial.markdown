@@ -117,7 +117,7 @@ Any changes done on tensor reflects on the numpy array . This is due to the logi
 
 Let's Learn PyTorch with an example of fitting a sin curve on a 3 degree polynomial.
 
-![gif](/movie.gif)
+![gif](/images/movie.gif)
 
 NumPy approach: 
 {% highlight ruby %}
