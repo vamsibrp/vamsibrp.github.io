@@ -51,11 +51,7 @@ step 4: do something.
 
 When the Dockerfile is run for the very first time, all the steps are cached. 
 
-Let's assume a code change was made in code of step 3 and we are building the image. 
-
-In step 1 and step 2, there are no changes and therefore no need to build them. So they are taken from the cache.
-
-Since the change was in step 3, all the steps that come thereafter have to be built instead of taking from the cache and cached after build at each step succeeds.
+Let's assume a code change was made in code of step 3 and we are building the image. In step 1 and step 2, there are no changes and therefore no need to build them. So they are taken from the cache. Since the change was in step 3, all the steps that come thereafter have to be built instead of taking from the cache and cached after build at each step succeeds.
 
 Now we have idea of how caching works in building an image. So, Let's look into some best practices here.
 

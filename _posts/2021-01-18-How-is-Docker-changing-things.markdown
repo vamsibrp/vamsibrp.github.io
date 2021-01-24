@@ -19,6 +19,8 @@ We now understand what Docker was trying to solve. There is another concept of `
 
 Just observe , Docker, container and the logo of docker. The theme might have come from the inspiration of Shipping goods through sea. In this analogy once the goods are loaded into the container, what ever happens inside the containers is independent . This is same with our Container as well. Let's get into what a container is.
 
+~[docker-image](/images/docker.png)
+
 A container is simply another process on your machine that has been isolated from all other processes on the host machine. That isolation leverages kernel namespaces and cgroups, features that have been in Linux for a long time. Docker has worked to make these capabilities approachable and easy to use.
 
 
@@ -40,12 +42,29 @@ Let's introduce a concept of image(container image)
 
 When running a container, it uses an isolated filesystem. This custom filesystem is provided by a container image. Since the image contains the container's filesystem, it must contain everything needed to run an application - all dependencies, configuration, scripts, binaries, etc. The image also contains other configuration for the container, such as environment variables, a default command to run, and other metadata.
 
-Here, I get the shipment containing the container image, I load this image as a conatiner using Docker and I can start using this application. It is that easy to ship our code without having to worry about the "it was working on my machine" idiom. This smoothens the flow of testing and deploying the build once it is approved by the testing team.
+Here, I get the shipment containing the container image, I load this image as a container using Docker and I can start using this application. It is that easy to ship our code without having to worry about the "it was working on my machine" idiom. This smoothens the flow of testing and deploying the build once it is approved by the testing team.
 
+Till now, we have talked about images, container and Docker independently. Now let's talk a bit about the combined to avoid any confusions.
+
+### Docker image vs Docker Container
+
+Both Docker images and Docker containers are closely related and are part of a system defined by the Docker platform and it isn’t fair to contrast them as opposing entities. In the sections above you may already have some understanding as to how the two establish a relationship.
+Images can exist without containers but containers needs to be run as an image. Containers use images to construct a run-time environment and run an application.
+
+![crating-a-docker-container](/images/crating-a-docker-container.png)
+
+As Shown above, Dockerfile creates images which intern run and start a container. In case you still want to read completely about this. Please refer [this](https://phoenixnap.com/kb/docker-image-vs-container)
 
 ### Dockerfile
 
 A Dockerfile is simply a text-based script of instructions that is used to create a container image. This file is heart of the concept.
+
+{% highlight ruby %}
+FROM ubuntu:18.04
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+{% endhighlight %}
 
 ### How to create an image
 
