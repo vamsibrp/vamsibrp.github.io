@@ -1,9 +1,11 @@
 ---
 layout: post
-title:  "PyTorch Learning"
+title:  "Fitting a sin curve with 3-Degree Polynomial using PyTorch"
 date:   2021-01-06 16:23:27 +0530
 categories: learn AI
 ---
+In this blog, I will take you through the basics of PyTorch and then explain how to fit a sin curve with 3-degree polynomial.
+Let's start with basics.
 
 <h1>{{"Tensors"}}</h1>
 Tensors are data structures similar to arrays and matrices. PyTorch uses tensors to encode the inputs, outputs and paramaters of the model. These Tensor run on GPU or specific hardware devices to improvise the performance
@@ -115,7 +117,15 @@ Any changes done on tensor reflects on the numpy array . This is due to the logi
 1) It used GPU and other accelarators to power up computations 50x.
 2) Automatic differentiation Library for Nueral Networks.
 
+### Fitting a sin curve on a 3 degree polynomial
+
 Let's Learn PyTorch with an example of fitting a sin curve on a 3 degree polynomial.
+
+When you observe, sin fuction between -pi and +pi looks something similar to a 3 degree polynomial. In this tutorial, we shall try to arrive at a 3-degree polynomial which fits sin curve in -pi to +pi.
+
+So, our approach is to start with a random polynomial with co-efficients a,b,c and d. Our loss function is going to be sum of squares of difference between predicted and actual values, with learmning rate being 1e-6 and using deep-learning to arrive at the best fit. Try to understand what is batch size and epoch for the discussed model below. Learn [difference-between-a-batch-and-an-epoch](https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/)
+
+The below GIF actually visualises how we arrive at the best fitting curve after assuming a random 3-degree polynomial.
 
 ![gif](/images/movie.gif)
 
