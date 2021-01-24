@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Fitting a sin curve with 3-Degree Polynomial using PyTorch"
-date:   2021-01-06 16:23:27 +0530
+date:   2021-01-24 16:23:27 +0530
 categories: learn AI
 ---
 In this blog, I will take you through the basics of PyTorch and then explain how to fit a sin curve with 3-degree polynomial.

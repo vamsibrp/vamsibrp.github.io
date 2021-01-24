@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How is docker changing things?"
-date:   2021-01-18 16:23:27 +0530
+date:   2021-01-22 16:23:27 +0530
 categories: learn AI
 ---
 
