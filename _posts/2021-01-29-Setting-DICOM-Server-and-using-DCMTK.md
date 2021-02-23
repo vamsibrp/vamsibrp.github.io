@@ -88,5 +88,35 @@ findscu -P -k PatientName="Hartgard*"  localhost 4242 /path/to/query-file/query_
 
 `query_dicom_file` is created using dump2dcm utility provided in dcmtk. refer [this](https://support.dcmtk.org/docs/dump2dcm.html)
 
+Note: You must add the client modalities or other server modalities in config of Orthanc server. Refer Orthanc.json present in Orthanc server.
+
+```
+    "storeSCU" : [ "STORESCU", "172.29.0.1", 2000 ],
+     "FindSCU"  :  [ "FINDSCU", "172.29.0.1", 2000 ],
+     "MoveSCU"  : [  "MOVESCU", "172.29.0.1", 2000 ],
+     "GetSCU"   :  [ "GETSCU", "172.29.0.1", 2000 ]
+```
+
 ### Downloading the DICOM files from the server
+Generally, The requirement arises in move the dicom files from the client pacs to our pacs to run model or do any task on the DICOM file. This requires an utility to move DICOM files from one Server to another. DCMTK provides us `movescu` for this exact purpose.
+
+`movescu` moves dicom files from modality A(say orthanc server) to modality B(again an orthanc Server). It is quite different from the above discussed `dcmsend` and `findscu` where a server and a client are involved. In `movescu` a total of 3 entities are involved.
+
+To let the servers know each-other add the modality of the other in the Orthanc.json.
+
+For example:
+```
+ "Orthanc2" :  [ "ORTHANC2","pacs2", 4243 ]
+```
+Documentation of movescu can be found [here](https://support.dcmtk.org/docs/movescu.html)
+
+Adding this in Orthanc Server-1 lets the server-1 know about the server-2 and vice-versa.
+
+The syntax for `movescu` would be something like this:
+```
+movescu <options> PatientName="<PATIENT>" -k PatientID="<id>" -aem <modality> host port
+```
+
+
+
 
