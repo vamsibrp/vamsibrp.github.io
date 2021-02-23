@@ -69,7 +69,8 @@ findscu options peer port dcmfile-in...
 `dcmfile-in` : The DICOM query files.
 `options` : These are the flags that does many things for us
 
-The query file could, for instance, be created with the `dump2dcm` utility from a script like the following example:
+The query file could, for instance, be created with the `dump2dcm` utility from a textfile. 
+Example:
 {% highlight ruby %}
 query patient names and IDs
 (0008,0052) CS [PATIENT]     # QueryRetrieveLevel
@@ -91,16 +92,16 @@ findscu -P -k PatientName="Hartgard*"  localhost 4242 /path/to/query-file/query_
 Note: You must add the client modalities or other server modalities in config of Orthanc server. Refer Orthanc.json present in Orthanc server.
 
 ```
-    "storeSCU" : [ "STORESCU", "172.29.0.1", 2000 ],
+     "storeSCU" : [ "STORESCU", "172.29.0.1", 2000 ],
      "FindSCU"  :  [ "FINDSCU", "172.29.0.1", 2000 ],
      "MoveSCU"  : [  "MOVESCU", "172.29.0.1", 2000 ],
      "GetSCU"   :  [ "GETSCU", "172.29.0.1", 2000 ]
 ```
 
 ### Downloading the DICOM files from the server
-Generally, The requirement arises in move the dicom files from the client pacs to our pacs to run model or do any task on the DICOM file. This requires an utility to move DICOM files from one Server to another. DCMTK provides us `movescu` for this exact purpose.
+ The requirement arises in moving the dicom files from the client pacs to our pacs to run model or do any task on the DICOM files. This requires an utility to move DICOM files from one Server to another. DCMTK provides us `movescu` for this exact purpose.
 
-`movescu` moves dicom files from modality A(say orthanc server) to modality B(again an orthanc Server). It is quite different from the above discussed `dcmsend` and `findscu` where a server and a client are involved. In `movescu` a total of 3 entities are involved.
+`movescu` moves dicom files from modality A(orthanc server-1) to modality B(orthanc Server-2). It is quite different from the above discussed `dcmsend` and `findscu` where a server and a client are only involved. In `movescu` a total of 3 entities are involved.
 
 To let the servers know each-other add the modality of the other in the Orthanc.json.
 
