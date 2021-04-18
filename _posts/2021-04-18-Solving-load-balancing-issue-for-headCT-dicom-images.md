@@ -118,9 +118,9 @@ Instead of IP address we provide the service name as we are inside the docker, c
 
 Explanation : Say ,the function `SendToModality()` picks modality `dcmio2` to send the study. From the above, we know the `dcmio2` modality is our docker service `gateway2`. Thus, `gateway2` receives the study based on our hash function and the number of buckets.
 
-I will keep this space updated if we face this deployment with any performance issues or better performing hash functions and we are soon palnning to make our gateway open-source for other collaborations.
+I will keep this space updated with any deployment issues or with some better-performing hash functions. We are soon planning to make our gateway open-source for collaborations.
 
-Thank you for reading this blog!! Have a great day
+Thank you for reading the blog!! Have a great day.
 
 
 
