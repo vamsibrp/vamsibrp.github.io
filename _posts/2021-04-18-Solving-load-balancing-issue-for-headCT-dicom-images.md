@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Implementing load balancing on gateways for headCT dicom images"
-date:   2021-02-22 12:23:27 +0530
+date:   2021-04-18 12:23:27 +0530
 ---
 
 ### Problem Statement
